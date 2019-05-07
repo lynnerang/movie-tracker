@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './_App.scss';
 
 const App = () => {
 	return <div className="myclass">poop</div>;
