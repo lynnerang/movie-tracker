@@ -5,27 +5,22 @@ class App extends Component {
 	state = {
 		movies: [],
 		query: ''
-  };
-  
-  async componentDidMount() {
-    console.log(process.env.REACT_APP_API_KEY, process.env.REACT_APP_BASE_URL)
-    const test = `${process.env.REACT_APP_BASE_URL}?api_key=${process.env.REACT_APP_API_KEY}&query=indiana`;
-    console.log(test);
-    const BASE_URL = 'https://api.themoviedb.org/3/search/movie';
-    const test2 = await fetch(`${BASE_URL}?api_key=${process.env.REACT_APP_API_KEY}&query=indiana`)
-    console.log(await test2.json());
-  }
+	};
 
+  async componentDidMount() {
+    const res = await fetch(`${process.env.REACT_APP_BASE_URL}?api_key=${process.env.REACT_APP_API_KEY}&query=indiana`);
+    const json = await res.json()
+    console.log(json.results)
+  }
+  
 	handleChange = e => {
 		this.setState({ query: e.target.value });
 	};
 
 	handleSubmit = async e => {
 		e.preventDefault();
-    try {
-
-			const res = await fetch(`${process.env.REACT_APP_BASE_URL}&api_key=${process.env.REACT_APP_API_KEY}`
-			);
+		try {
+			const res = await fetch(`${process.env.REACT_APP_BASE_URL}&api_key=${process.env.REACT_APP_API_KEY}`);
 			// const json = await res.json();
 			console.log(res.json());
 		} catch (err) {
