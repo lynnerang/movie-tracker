@@ -19,7 +19,9 @@ class App extends Component {
 		return (
 			<section className="App">
 				<h1>MovieTracker</h1>
-				<MovieContainer classList="trending" />
+				<MovieContainer section="trending" />
+				<MovieContainer section="trending" />
+				<MovieContainer section="trending" />
 			</section>
 		);
 	}
