@@ -1,7 +1,7 @@
 export const cleanMovies = movies => {
 	return movies.map(movie => {
 		return {
-			poster: movie.poster_path ? `${process.env.REACT_APP_BASE_IMAGE_URL}/w154${movie.poster_path}` : null,
+			poster: movie.poster_path ? `${process.env.REACT_APP_BASE_IMAGE_URL}/w300${movie.poster_path}` : null,
 			id: movie.id,
 			title: movie.title
 		};
