@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import { moviesReducer } from './moviesReducer';
+import { trendingMoviesReducer } from './trendingMoviesReducer';
 
 const rootReducer = combineReducers({
-	movies: moviesReducer
+	trendingMovies: trendingMoviesReducer
 });
 
 export default rootReducer;
