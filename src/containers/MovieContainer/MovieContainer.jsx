@@ -1,16 +1,14 @@
 import React from 'react';
-import Movie from '../../components/Movie/Movie';
+import Poster from '../../components/Poster/Poster';
 import { connect } from 'react-redux';
 import './_MovieContainer.scss';
 
 export const MovieContainer = props => {
-	const movies = props.movies.slice(0, 6).map(movie => <Movie key={movie.id} {...movie} />);
+	const posters = props.movies.slice(0, 6).map(movie => <Poster key={movie.id} {...movie} />);
 	return (
 		<section className={`MovieContainer ${props.classList}`}>
-			<h2 className='MovieContainer-section-title'>{`${props.classList.toUpperCase()}`}</h2>
-			<div className='MovieContainer-section'>
-			{movies}
-			</div>
+			<h2 className="MovieContainer-section-title">{`${props.classList.toUpperCase()}`}</h2>
+			<div className="MovieContainer-section">{posters}</div>
 		</section>
 	);
 };

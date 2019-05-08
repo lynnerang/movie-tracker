@@ -1,4 +1,4 @@
-.Movie {
+.Poster {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -6,11 +6,11 @@
 	text-align: center;
 }
 
-.Movie-poster {
+.Poster-poster {
 	width: 225px;
 }
 
-.Movie-title {
+.Poster-title {
 	margin: 10px 0 0 0;
 	width: 225px;
 	overflow: hidden;
