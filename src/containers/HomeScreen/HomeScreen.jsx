@@ -40,17 +40,17 @@ class HomeScreen extends Component {
   }
 }
 
-// const mapStateToProps = state => {
-//   return {
-//     movies: state.movies
-//   };
-// };
+const mapStateToProps = state => {
+  return {
+    movies: state.movies
+  };
+};
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     addTrendingMovies: movies => dispatch(addTrendingMovies(movies))
-//   };
-// };
+const mapDispatchToProps = dispatch => {
+  return {
+    addTrendingMovies: movies => dispatch(addTrendingMovies(movies))
+  };
+};
 
-// export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
-export default HomeScreen;
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
+
