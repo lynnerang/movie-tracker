@@ -1,0 +1,19 @@
+.Poster {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	text-align: center;
+}
+
+.Poster-poster {
+	width: 225px;
+}
+
+.Poster-title {
+	margin: 10px 0 0 0;
+	width: 225px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
