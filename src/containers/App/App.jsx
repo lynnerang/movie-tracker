@@ -18,6 +18,17 @@ class App extends Component {
 	render() {
 		return (
 			<section className="App">
+				<Nav />
+				<Switch>
+					<Route exact path="/" component={Home} />
+					<Route exact path="/:section" component={MovieContainer} />
+					<Route
+						path="/title/:id"
+						render={({ match }) => <MovieDetails id={match.params.id} key={match.params.id} />}
+					/>
+					<Route exact path="/title/:id" component={MovieDetails} />
+					<Route exact path="/account" component={AccountScreen} />
+				</Switch>
 				<h1>MovieTracker</h1>
 				<MovieContainer section="trending" />
 				<MovieContainer section="trending" />
