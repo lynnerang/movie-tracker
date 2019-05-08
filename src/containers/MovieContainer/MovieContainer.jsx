@@ -6,8 +6,8 @@ import './_MovieContainer.scss';
 export const MovieContainer = props => {
 	const posters = props.movies.slice(0, 6).map(movie => <Poster key={movie.id} {...movie} />);
 	return (
-		<section className={`MovieContainer ${props.classList}`}>
-			<h2 className="MovieContainer-section-title">{`${props.classList.toUpperCase()}`}</h2>
+		<section className={`MovieContainer ${props.section}`}>
+			<h2 className="MovieContainer-section-title">{`${props.section.toUpperCase()}`}</h2>
 			<div className="MovieContainer-section">{posters}</div>
 		</section>
 	);
