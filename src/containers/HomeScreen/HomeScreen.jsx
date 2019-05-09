@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MovieContainer from '../MovieContainer/MovieContainer';
 import { addTrendingMovies } from '../../actions';
+import { addTopRatedMovies } from '../../actions';
 import * as cleaners from '../../util/cleaners';
 import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
@@ -14,13 +15,27 @@ class HomeScreen extends Component {
   //   }
   // }
 
-  async componentDidMount() {
+  componentDidMount() {
+    this.fetchTrending();
+    this.fetchTopRated();
+  }
+
+  fetchTrending = async () => {
     const res = await fetch(
       `${process.env.REACT_APP_BASE_URL}/movie/popular?api_key=${process.env.REACT_APP_API_KEY}`
     );
     const json = await res.json();
     const trendingMovies = cleaners.cleanMovies(json.results);
     this.props.addTrendingMovies(trendingMovies);
+  }
+
+  fetchTopRated = async () => {
+    const res = await fetch(
+      `${process.env.REACT_APP_BASE_URL}/movie/top_rated?api_key=${process.env.REACT_APP_API_KEY}`
+    );
+    const json = await res.json();
+    const topMovies = cleaners.cleanMovies(json.results);
+    this.props.addTopRatedMovies(topMovies);   
   }
 
   render() {
@@ -34,7 +49,8 @@ class HomeScreen extends Component {
     return (
       <>
         <h1>MovieTracker</h1>
-        <MovieContainer section="trending" />
+        <MovieContainer movies={this.props.trendingMovies} section="trending" />
+        <MovieContainer movies={this.props.topRatedMovies} section="top-rated" />
       </>
     )
   }
@@ -42,13 +58,15 @@ class HomeScreen extends Component {
 
 const mapStateToProps = state => {
   return {
-    movies: state.movies
+    trendingMovies: state.trendingMovies,
+    topRatedMovies: state.topRatedMovies
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    addTrendingMovies: movies => dispatch(addTrendingMovies(movies))
+    addTrendingMovies: movies => dispatch(addTrendingMovies(movies)),
+    addTopRatedMovies: movies => dispatch(addTopRatedMovies(movies))
   };
 };
 

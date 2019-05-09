@@ -1,6 +1,5 @@
 import React from 'react';
 import Poster from '../../components/Poster/Poster';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './_MovieContainer.scss';
 
@@ -20,14 +19,4 @@ export const MovieContainer = props => {
 	);
 };
 
-export const mapStateToProps = state => {
-	return {
-		movies: state.trendingMovies
-	};
-};
-
-export const mapDispatchToProps = dispatch => {
-	return {};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(MovieContainer);
+export default MovieContainer;
