@@ -64,16 +64,8 @@ class HomeScreen extends Component {
 	};
 
 	render() {
-		// let content;
-		// if (!this.state.authenticated) {
-		//   content = 'SIGN IN, LOSER'
-		// } else {
-		//   content = 'GOOD JOB, LOSER'
-		// }
-
 		return (
 			<>
-				<h1>MovieTracker</h1>
 				<MovieContainer movies={this.props.trendingMovies} section="trending" />
 				<MovieContainer movies={this.props.topRatedMovies} section="top-rated" />
 				<MovieContainer movies={this.props.nowPlayingMovies} section="now-playing" />

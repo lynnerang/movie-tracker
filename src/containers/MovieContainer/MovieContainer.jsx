@@ -13,8 +13,8 @@ export const MovieContainer = props => {
   });
 	return (
 		<section className={`MovieContainer ${props.section}`}>
-			<h2 className="MovieContainer-section-title">{`${props.section.toUpperCase()}`}</h2>
-			<div className="MovieContainer-section">{posters}</div>
+			<h2 className="MovieContainer-section-title">{`${props.section}`}</h2>
+			<div className="MovieContainer-section-row">{posters}</div>
 		</section>
 	);
 };

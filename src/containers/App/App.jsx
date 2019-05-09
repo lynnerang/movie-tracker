@@ -15,7 +15,7 @@ class App extends Component {
 				<Header />
 				<div className="below-header">
 					<Navigation />
-					<main>
+					<main className="main-content">
 						<Switch>
 							<Route exact path="/" component={HomeScreen} />
 							<Route exact path="/Login" component={Login} />

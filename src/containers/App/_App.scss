@@ -5,5 +5,10 @@
 
 .below-header {
   display: flex;
-  height: calc(100vh - 50px);
+  min-height: calc(100vh - 50px);
+}
+
+.main-content {
+  width: calc(100vw - 140px);
+  padding: 0px 20px 20px 20px;
 }
