@@ -1,0 +1,24 @@
+.MovieDetails {
+	height: 100vh;
+	width: 100vw;
+	position: relative;
+	color: white;
+}
+
+.MovieDetails-backdrop {
+	height: 100vh;
+	width: 100vw;
+  position: absolute;
+  background-color: black;
+	z-index: -1;
+	& img {
+		height: 100%;
+		width: 100%;
+    object-fit: cover;
+    opacity: 0.15;
+	}
+}
+
+.MovieDetails-content {
+	z-index: 2;
+}

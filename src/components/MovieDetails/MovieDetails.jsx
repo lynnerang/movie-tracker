@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { cleanMovieDetails } from '../../util/cleaners';
+import './_MovieDetails.scss';
 
 class MovieDetails extends Component {
 	state = {
@@ -39,24 +40,28 @@ class MovieDetails extends Component {
 		} = this.state.details;
 
 		return (
-			<section>
+			<section className="MovieDetails">
+				<div className="MovieDetails-backdrop">
+					<img src={backdrop} alt={`${title} backdrop`} />
+				</div>
 				{this.state.loading ? (
 					<h1>Loading...</h1>
 				) : (
-					<header>
-						<h1>{title}</h1>
-						<img src={poster} alt={`${title} poster`} />
-						<img src={backdrop} alt={`${title} backdrop`} />
-						<p>Release Date: {releaseDate}</p>
-						<p>Genre(s): {genres}</p>
-						<p>Runtime: {runtime}</p>
-						<p>Rating: {rating}</p>
-						<p>Language: {language}</p>
-						<p>Description: {description}</p>
-						<p>Production Companies: {production}</p>
-						<p>Popularity: {popularity}</p>
-						<p>Box Office Gross: ${boxOffice}</p>
-					</header>
+					<main className="MovieDetails-content">
+						<header>
+							<h1>{title}</h1>
+							<img src={poster} alt={`${title} poster`} />
+							<p>Release Date: {releaseDate}</p>
+							<p>Genre(s): {genres}</p>
+							<p>Runtime: {runtime} minutes</p>
+							<p>Rating: {rating}</p>
+							<p>Language: {language}</p>
+							<p>Description: {description}</p>
+							<p>Production Companies: {production}</p>
+							<p>Popularity: {popularity}</p>
+							<p>Box Office Gross: ${boxOffice}</p>
+						</header>
+					</main>
 				)}
 			</section>
 		);
