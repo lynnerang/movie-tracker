@@ -10,7 +10,7 @@ export const cleanMovies = movies => {
 
 export const cleanMovieDetails = movie => {
 	return {
-		poster: movie.poster_path ? `${process.env.REACT_APP_BASE_IMAGE_URL}/w500${movie.poster_path}` : null,
+		poster: movie.poster_path ? `${process.env.REACT_APP_BASE_IMAGE_URL}/w342${movie.poster_path}` : null,
 		backdrop: movie.backdrop_path ? `${process.env.REACT_APP_BASE_IMAGE_URL}/w1280${movie.backdrop_path}` : null,
 		genres: movie.genres.map(g => g.name).join(', '),
 		id: movie.id,
