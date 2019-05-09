@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { cleanMovieDetails } from '../../util/Cleaners';
+import { cleanMovieDetails } from '../../util/cleaners';
 import './_MovieDetails.scss';
 
 class MovieDetails extends Component {

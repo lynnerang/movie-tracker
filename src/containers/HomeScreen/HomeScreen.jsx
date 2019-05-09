@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import MovieContainer from '../MovieContainer/MovieContainer';
-import { addTrendingMovies, addTopRatedMovies, addNowPlayingMovies, addUpcomingMovies } from '../../actions';
-import * as cleaners from '../../util/Cleaners';
-import { fetchMovies } from '../../util/Api';
+import * as actions from '../../actions';
+import * as cleaners from '../../util/cleaners';
+import { fetchMovies } from '../../util/api';
 import { connect } from 'react-redux';
 import './_HomeScreen.scss';
 
@@ -67,13 +67,13 @@ class HomeScreen extends Component {
 		// }
 
 		return (
-			<main>
+			<>
 				<h1>MovieTracker</h1>
 				<MovieContainer movies={this.props.trendingMovies} section="trending" />
 				<MovieContainer movies={this.props.topRatedMovies} section="top-rated" />
 				<MovieContainer movies={this.props.nowPlayingMovies} section="now-playing" />
 				<MovieContainer movies={this.props.upcomingMovies} section="upcoming" />
-			</main>
+			</>
 		);
 	}
 }
@@ -89,10 +89,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		addTrendingMovies: movies => dispatch(addTrendingMovies(movies)),
-		addTopRatedMovies: movies => dispatch(addTopRatedMovies(movies)),
-		addNowPlayingMovies: movies => dispatch(addNowPlayingMovies(movies)),
-		addUpcomingMovies: movies => dispatch(addUpcomingMovies(movies))
+		addTrendingMovies: movies => dispatch(actions.addTrendingMovies(movies)),
+		addTopRatedMovies: movies => dispatch(actions.addTopRatedMovies(movies)),
+		addNowPlayingMovies: movies => dispatch(actions.addNowPlayingMovies(movies)),
+		addUpcomingMovies: movies => dispatch(actions.addUpcomingMovies(movies))
 	};
 };
 
