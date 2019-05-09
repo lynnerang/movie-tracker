@@ -11,3 +11,17 @@ export const addTopRatedMovies = movies => {
     payload: { movies }
   }
 }
+
+export const addNowPlayingMovies = movies => {
+  return {
+    type: 'ADD_NOW_PLAYING',
+    payload: { movies }
+  }
+}
+
+export const addUpcomingMovies = movies => {
+  return {
+    type: 'ADD_UPCOMING',
+    payload: { movies }
+  }
+}
