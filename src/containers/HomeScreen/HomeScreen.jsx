@@ -48,12 +48,16 @@ class HomeScreen extends Component {
 		switch (state) {
 			case 'popular':
 				!trendingMovies.length && addTrendingMovies(movies);
+				break;
 			case 'top_rated':
 				!topRatedMovies.length && addTopRatedMovies(movies);
+				break;
 			case 'now_playing':
 				!nowPlayingMovies.length && addNowPlayingMovies(movies);
+				break;
 			case 'upcoming':
 				!upcomingMovies.length && addUpcomingMovies(movies);
+				break;
 			default:
 				break;
 		}

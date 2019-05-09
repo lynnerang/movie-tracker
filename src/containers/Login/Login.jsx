@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { login, logout } from '../../actions';
+import { connect } from 'react-redux';
 
 class Login extends Component {
 	state = {
@@ -10,7 +11,7 @@ class Login extends Component {
 	handleChange = e => {
 		const { name, value } = e.target;
 		this.setState({ [name]: value });
-	};
+  };
 
 	handleSubmit = async e => {
 		e.preventDefault();
@@ -24,7 +25,7 @@ class Login extends Component {
 			});
 			const json = await res.json();
 			const user = json.data;
-			this.props.signIn(user);
+			this.props.login(user);
 		} catch (err) {
 			console.log(err.status, err.message);
 		}
@@ -66,9 +67,9 @@ export const mapStateToProps = state => {
 
 export const mapDispatchToProps = dispatch => {
 	return {
-		login: userData => dispatch(login(userData)),
+		login: user => dispatch(login(user)),
 		logout: () => dispatch(logout())
 	};
 };
 
-export default Login;
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
