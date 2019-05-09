@@ -30,7 +30,7 @@ class MovieDetails extends Component {
 			poster,
 			backdrop,
 			genres,
-			id,
+			// id,
 			rating,
 			language,
 			description,
@@ -41,27 +41,49 @@ class MovieDetails extends Component {
 
 		return (
 			<section className="MovieDetails">
-				<div className="MovieDetails-backdrop">
-					<img src={backdrop} alt={`${title} backdrop`} />
-				</div>
 				{this.state.loading ? (
 					<h1>Loading...</h1>
 				) : (
-					<main className="MovieDetails-content">
-						<header>
-							<h1>{title}</h1>
-							<img src={poster} alt={`${title} poster`} />
-							<p>Release Date: {releaseDate}</p>
-							<p>Genre(s): {genres}</p>
-							<p>Runtime: {runtime} minutes</p>
-							<p>Rating: {rating}</p>
-							<p>Language: {language}</p>
-							<p>Description: {description}</p>
-							<p>Production Companies: {production}</p>
-							<p>Popularity: {popularity}</p>
-							<p>Box Office Gross: ${boxOffice}</p>
-						</header>
-					</main>
+					<div>
+						<div className="MovieDetails-backdrop">
+							<img src={backdrop} alt={`${title} backdrop`} />
+						</div>
+						<section className="MovieDetails-content">
+							<header>
+								<h1>
+									{title}{' '}
+									<span className="MovieDetails-release-date">
+										({releaseDate}) <span>{language}</span>
+									</span>
+								</h1>
+								<div className="MovieDetails-genres">
+									{genres && genres.map(g => <p className="MovieDetails-genre">{g}</p>)}
+								</div>
+							</header>
+							<div className="MovieDetails-grid">
+								<main className="MovieDetails-main">
+									<img src={poster} alt={`${title} poster`} />
+									<div className="MovieDetails-metadata">
+										<p className="metadata-header">Rating:</p>
+										<p className="metadata-info">{rating}</p>
+										<p className="metadata-header">Runtime:</p>
+										<p className="metadata-info">{runtime} minutes</p>
+										<p className="metadata-header">Description:</p>
+										<p className="metadata-info">{description}</p>
+										<p className="metadata-header">Production Companies:</p>
+										<p className="metadata-info">{production}</p>
+										<p className="metadata-header">Popularity:</p>
+										<p className="metadata-info">{popularity}</p>
+										<p className="metadata-header">Box Office Gross: </p>
+										<p className="metadata-info">${boxOffice}</p>
+									</div>
+								</main>
+								<section className="MovieDetails-similar">
+									<h2>Similar Movies</h2>
+								</section>
+							</div>
+						</section>
+					</div>
 				)}
 			</section>
 		);
