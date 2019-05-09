@@ -2,13 +2,29 @@
 	text-align: left;
 }
 
-.MovieContainer-section {
+.MovieContainer-section-wrap {
   display: grid;
   border: 1px solid red;
   grid-template-columns: repeat(auto-fill, 225px);
   grid-column-gap: 25px;
   overflow: hidden;
   padding: 15px;
+}
+
+.MovieContainer-section-title {
+  font-size: 18px;
+  margin-bottom: 0;
+  font-weight: 400;
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
+}
+
+.MovieContainer-section-row {
+  display: flex;
+  padding: 15px;
+  overflow-x: scroll;
 }
 
 .trending {
