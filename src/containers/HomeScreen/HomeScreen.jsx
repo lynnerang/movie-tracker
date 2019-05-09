@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import MovieContainer from '../MovieContainer/MovieContainer';
 import { addTrendingMovies, addTopRatedMovies, addNowPlayingMovies, addUpcomingMovies } from '../../actions';
-import * as cleaners from '../../util/cleaners';
-import { fetchMovies } from '../../util/api';
+import * as cleaners from '../../util/Cleaners';
+import { fetchMovies } from '../../util/Api';
 import { connect } from 'react-redux';
 import './_HomeScreen.scss';
 

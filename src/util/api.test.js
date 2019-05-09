@@ -1,4 +1,4 @@
-import * as api from './api';
+import * as Api from './Api';
 
 const mockMovie = {
   'vote_count': 4354,
@@ -31,12 +31,12 @@ describe('fetchMovies', () => {
 
   it('should call fetch with the correct arguments', async () => {
     const expectedUrl = 'https://api.themoviedb.org/3/movie/undefined?api_key=3f473facbf0990fef2896fe714e2aebd';
-    await api.fetchMovies();
+    await Api.fetchMovies();
     expect(window.fetch).toHaveBeenCalledWith(expectedUrl);
   })
 
   it('should return a parsed version of the result', async () => {
-    const expectedData = await api.fetchMovies();
+    const expectedData = await Api.fetchMovies();
     expect(expectedData).toEqual(mockMovie);
   })
 
@@ -44,6 +44,6 @@ describe('fetchMovies', () => {
     window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
       ok: false
     }));
-    await expect(api.fetchMovies()).rejects.toEqual(Error('Can\'t fetch movies.'))
+    await expect(Api.fetchMovies()).rejects.toEqual(Error('Can\'t fetch movies.'))
   })
 })
