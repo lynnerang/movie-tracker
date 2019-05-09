@@ -1,6 +1,27 @@
 export const addTrendingMovies = movies => {
 	return {
-		type: 'ADD_MOVIES',
+		type: 'ADD_TRENDING',
 		payload: { movies }
 	};
 };
+
+export const addTopRatedMovies = movies => {
+  return {
+    type: 'ADD_TOP_RATED',
+    payload: { movies }
+  }
+}
+
+export const addNowPlayingMovies = movies => {
+  return {
+    type: 'ADD_NOW_PLAYING',
+    payload: { movies }
+  }
+}
+
+export const addUpcomingMovies = movies => {
+  return {
+    type: 'ADD_UPCOMING',
+    payload: { movies }
+  }
+}

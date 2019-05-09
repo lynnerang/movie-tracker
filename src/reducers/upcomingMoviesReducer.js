@@ -1,9 +1,8 @@
-export const trendingMoviesReducer = (state = [], action) => {
+export const upcomingMoviesReducer = (state = [], action) => {
   switch (action.type) {
-    case 'ADD_TRENDING':
+    case 'ADD_UPCOMING':
       return action.payload.movies
     default:
       return state;
   }
 }
-

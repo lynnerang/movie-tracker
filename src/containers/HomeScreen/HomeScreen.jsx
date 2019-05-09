@@ -1,56 +1,99 @@
 import React, { Component } from 'react';
 import MovieContainer from '../MovieContainer/MovieContainer';
-import { addTrendingMovies } from '../../actions';
-import * as cleaners from '../../util/cleaners';
+import { addTrendingMovies, addTopRatedMovies, addNowPlayingMovies, addUpcomingMovies } from '../../actions';
+import * as cleaners from '../../util/Cleaners';
+import { fetchMovies } from '../../util/Api';
 import { connect } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
 import './_HomeScreen.scss';
 
 class HomeScreen extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     authenticated: false
-  //   }
-  // }
+	constructor(props) {
+	  super(props);
+	  this.state = {
+      authenticated: false,
+      newUser: false
+	  }
+	}
 
-  async componentDidMount() {
-    const res = await fetch(
-      `${process.env.REACT_APP_BASE_URL}/movie/popular?api_key=${process.env.REACT_APP_API_KEY}`
-    );
-    const json = await res.json();
-    const trendingMovies = cleaners.cleanMovies(json.results);
-    this.props.addTrendingMovies(trendingMovies);
-  }
+	componentDidMount() {
+		this.getMovies('popular');
+		this.getMovies('top_rated');
+		this.getMovies('now_playing');
+		this.getMovies('upcoming');
+	}
 
-  render() {
-    // let content;
-    // if (!this.state.authenticated) {
-    //   content = 'SIGN IN, LOSER'
-    // } else {
-    //   content = 'GOOD JOB, LOSER'
-    // }
+	getMovies = async path => {
+		try {
+			const res = await fetchMovies(path);
+			const movies = cleaners.cleanMovies(res.results);
+			this.updateMovieData(movies, path);
+		} catch (err) {
+			console.log(err);
+		}
+	};
 
-    return (
-      <>
-        <h1>MovieTracker</h1>
-        <MovieContainer section="trending" />
-      </>
-    )
-  }
+	updateMovieData = (movies, state) => {
+		const {
+			trendingMovies,
+			topRatedMovies,
+			nowPlayingMovies,
+			upcomingMovies,
+			addTrendingMovies,
+			addTopRatedMovies,
+			addNowPlayingMovies,
+			addUpcomingMovies
+		} = this.props;
+
+		switch (state) {
+			case 'popular':
+				!trendingMovies.length && addTrendingMovies(movies);
+			case 'top_rated':
+				!topRatedMovies.length && addTopRatedMovies(movies);
+			case 'now_playing':
+				!nowPlayingMovies.length && addNowPlayingMovies(movies);
+			case 'upcoming':
+				!upcomingMovies.length && addUpcomingMovies(movies);
+			default:
+				break;
+		}
+	};
+
+	render() {
+		// let content;
+		// if (!this.state.authenticated) {
+		//   content = 'SIGN IN, LOSER'
+		// } else {
+		//   content = 'GOOD JOB, LOSER'
+		// }
+
+		return (
+			<main>
+				<h1>MovieTracker</h1>
+				<MovieContainer movies={this.props.trendingMovies} section="trending" />
+				<MovieContainer movies={this.props.topRatedMovies} section="top-rated" />
+				<MovieContainer movies={this.props.nowPlayingMovies} section="now-playing" />
+				<MovieContainer movies={this.props.upcomingMovies} section="upcoming" />
+			</main>
+		);
+	}
 }
 
 const mapStateToProps = state => {
-  return {
-    movies: state.movies
-  };
+	return {
+		trendingMovies: state.trendingMovies,
+		topRatedMovies: state.topRatedMovies,
+		nowPlayingMovies: state.nowPlayingMovies,
+		upcomingMovies: state.upcomingMovies
+	};
 };
 
 const mapDispatchToProps = dispatch => {
-  return {
-    addTrendingMovies: movies => dispatch(addTrendingMovies(movies))
-  };
+	return {
+		addTrendingMovies: movies => dispatch(addTrendingMovies(movies)),
+		addTopRatedMovies: movies => dispatch(addTopRatedMovies(movies)),
+		addNowPlayingMovies: movies => dispatch(addNowPlayingMovies(movies)),
+		addUpcomingMovies: movies => dispatch(addUpcomingMovies(movies))
+	};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
-
