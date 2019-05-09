@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
 import './_Poster.scss';
 
 const Poster = props => {

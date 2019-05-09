@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import './_HomeScreen.scss';
 
 class HomeScreen extends Component {
+
 	constructor(props) {
 	  super(props);
 	  this.state = {
