@@ -1,0 +1,18 @@
+.Navigation {
+  background: #2A2E30;
+  width: 140px;
+  text-align: left;
+  padding: 0px 10px;
+}
+
+.nav-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-header {
+  font-size: 12px;
+  font-weight: 400;
+  color: white;
+  opacity: .4;
+}
