@@ -5,21 +5,25 @@ import UserForm from '../../containers/UserForm/UserForm';
 class Header extends Component {
 	state = {
 		showLogin: false,
-		showSignup: true
-	}
+		showSignup: false
+	};
+
+	closeUserForm = () => {
+		this.setState({ showLogin: false, showSignup: false });
+	};
 
 	render() {
-    let form = null;
-    
+		let form = null;
+
 		if (this.state.showLogin) {
-			form = <UserForm type="Log In" />;
+			form = <UserForm type="Log In" closeUserForm={this.closeUserForm} />;
 		} else if (this.state.showSignup) {
-      form = <UserForm type="Sign Up" />;
-    }
-    
+			form = <UserForm type="Sign Up" closeUserForm={this.closeUserForm} />;
+		}
+
 		return (
-      <header className="top-bar">
-        {form}
+			<header className="top-bar">
+				{form}
 				<Link exact="true" to="/" className="logo-area">
 					<img className="logo-img" src={require('../../../src/images/logo.png')} alt="Movie-tracker-logo" />
 					<h1 className="logo-text">MovieTracker</h1>
@@ -30,19 +34,13 @@ class Header extends Component {
 						<i className="fas fa-search" />
 					</div>
 					<div className="user-links">
-						<a
-							className="login-link"
-							href=""
-							onClick={() => this.setState({ showSignup: false, showLogin: !this.state.showLogin })}>
+						<p role="link" className="login-link" onClick={() => this.setState({ showSignup: false, showLogin: true })}>
 							Login
-						</a>
+						</p>
 						/
-						<a
-							className="login-link"
-							href=""
-							nClick={() => this.setState({ showLogin: false, showSignup: !this.state.showSignup })}>
+						<p role="link" className="login-link" onClick={() => this.setState({ showLogin: false, showSignup: true })}>
 							Sign Up
-						</a>
+						</p>
 					</div>
 				</div>
 			</header>

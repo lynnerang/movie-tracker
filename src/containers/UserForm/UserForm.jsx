@@ -22,9 +22,9 @@ class Login extends Component {
 
 		if (this.props.type === 'Log In') {
 			body = { email, password };
-			dir = 'new';
 		} else {
-			body = { name, email, password };
+      body = { name, email, password };
+      dir = 'new';
 		}
 		this.fetchUser(body, dir);
 	};
@@ -61,7 +61,7 @@ class Login extends Component {
 		return (
 			<div className="popup">
         <div className="dialog">
-          <i className='fas fa-times popup-close-btn' onClick={() => this.setState({ showPopup: false })}></i>
+          <i className='fas fa-times popup-close-btn' onClick={this.props.closeUserForm}></i>
           <h3 className="dialog-header">{this.props.type}</h3>
           <form className="user-form" onSubmit={this.handleSubmit}>
             <h4 className="form-header">Enter your details:</h4>
