@@ -6,8 +6,8 @@ import './_MovieContainer.scss';
 export const MovieContainer = props => {
   const posters = props.movies.slice(0, 6).map(movie => {
     return (
-      <Link to={`/title/${movie.id}`} key={movie.id}>
-        <Poster key={movie.id} {...movie} />
+      <Link className='poster-link' to={`/title/${movie.id}`} key={movie.id}>
+        <Poster size={props.section} key={movie.id} {...movie}  />
       </Link>
     );
   });

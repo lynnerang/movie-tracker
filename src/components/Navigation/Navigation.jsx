@@ -3,22 +3,42 @@ import { NavLink } from 'react-router-dom';
 
 const Navigation = () => {
 	return (
-		<aside className="Navigation">
-			<nav className="nav-section browse">
+    <aside className="Navigation">
+      <nav className="nav-section">
+        <NavLink className="nav-link home" exact to="/">
+          <i className="fas fa-home"></i>Home
+        </NavLink>
+      </nav>
+      <nav className="nav-section browse">
 				<h4 className="nav-header">BROWSE</h4>
 				<NavLink className="nav-link" exact to="/trending">
-					Trending
+          <i className="fas fa-fire"></i>Trending
 				</NavLink>
         <NavLink className="nav-link" exact to="/top_rated">
-          Top rated
+          <i className="fas fa-star-half-alt"></i>Top rated
 				</NavLink>
         <NavLink className="nav-link" exact to="/now_playing">
-          In Theatres
+          <i className="fas fa-ticket-alt"></i>In Theatres
 				</NavLink>
         <NavLink className="nav-link" exact to="/upcoming">
-          Coming soon
+          <i className="fas fa-certificate"></i>Upcoming
 				</NavLink>
-			</nav>
+      </nav>
+      <nav className="nav-section my-lists">
+        <h4 className="nav-header">MY LISTS</h4>
+        <NavLink className="nav-link" exact to="/trending">
+          <i className="fas fa-star"></i>Favorites
+				</NavLink>
+        <NavLink className="nav-link" exact to="/top_rated">
+          <i className="fas fa-eye"></i>Watchlist
+				</NavLink>
+        <NavLink className="nav-link" exact to="/now_playing">
+          <i className="fas fa-hand-paper"></i>Avoidlist
+				</NavLink>
+        <NavLink className="nav-link" exact to="/upcoming">
+          <i className="fas fa-clipboard-check"></i>Reviewed
+				</NavLink>
+      </nav>
 		</aside>
 	);
 };

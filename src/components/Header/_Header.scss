@@ -1,8 +1,11 @@
+@import '../../variables.scss';
+
 .top-bar {
-  background: #505C60;
-  height: 50px;
+  background: #484F51;
+  height: $header-height;
   width: 100%;
-  z-index: 2;
+  display: flex;
+  justify-content: space-between;
 }
 
 .logo-area {
@@ -11,14 +14,60 @@
   align-items: center;
 }
 
+.user-area {
+  display: flex;
+  align-items: center;
+}
+
 .logo-img {
   height: 30px;
-  padding: 0px 10px 5px 10px;
+  padding: 0px 8px 5px 12px;
 }
 
 .logo-text {
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 400;
   color: white;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.search-box {
+  height: 26px;
+  border-radius: 5px;
+  width: 300px;
+  background: $highlight;
+  padding-left: 8px;
+  border: 1px solid rgba(42, 46, 48, 0.913);
+}
+
+::placeholder {
+  font-style: italic;
+}
+
+.inner-search {
+  width: 300px;
+  position: relative;
+  margin-right: 40px;
+}
+
+.fa-search {
+  color: rgba(128, 128, 128, 0.619);
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  font-size: 14px;
+}
+
+.login-link {
+  margin: 0;
+  padding: 0;
+  margin-right: 20px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.79);
+
+  &:hover {
+    cursor: pointer;
+    color: white;
+  }
 }
 
