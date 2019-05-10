@@ -1,4 +1,3 @@
-@import './variables.scss';
 @import './containers/App/_App.scss';
 @import './components/Header/_Header.scss';
 @import './components/Navigation/_Navigation.scss';

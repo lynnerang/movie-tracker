@@ -1,0 +1,57 @@
+@import '../../variables.scss';
+
+.Login-form {
+  background: white;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 45px;
+
+  input {
+    margin: 10px;
+  }
+}
+
+.login-link {
+  margin: 0;
+  padding: 0;
+  margin-right: 20px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.79);
+}
+
+.login-link:hover {
+  cursor: pointer;
+  color: white;
+}
+
+.popup {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 3;
+}
+
+  .dialog {
+    padding: 30px 45px;
+    background: white;
+    border-radius: 5px;
+  }
+
+  .popup-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    z-index: 15;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+  }
