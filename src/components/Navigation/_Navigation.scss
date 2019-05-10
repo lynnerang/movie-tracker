@@ -5,6 +5,9 @@
   width: 140px;
   text-align: left;
   padding: 0px 10px;
+  position: fixed;
+  left: 0;
+  height: calc(100vh - 40px);
 }
 
 .nav-section {

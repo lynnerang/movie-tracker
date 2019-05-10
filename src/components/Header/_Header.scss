@@ -2,10 +2,13 @@
 
 .top-bar {
   background: #484F51;
-  height: $header-height;
+  max-height: $header-height;
   width: 100%;
   display: flex;
   justify-content: space-between;
+  position: fixed;
+  top: 0;
+  z-index: 1;
 }
 
 .logo-area {
