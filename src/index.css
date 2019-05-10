@@ -1,10 +1,3 @@
-@import './containers/App/_App.scss';
-@import './components/Header/_Header.scss';
-@import './components/Navigation/_Navigation.scss';
-@import './components/Poster/_Poster.scss';
-@import './containers/MovieContainer/_MovieContainer.scss';
-@import './containers/Login/_Login.scss';
-
 *,
 *::before,
 *::after {
