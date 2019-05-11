@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import UserForm from '../../containers/UserForm/UserForm';
 import { connect } from 'react-redux';
+import { login, logout } from '../../actions'
 
 class Header extends Component {
 	state = {
@@ -24,9 +25,7 @@ class Header extends Component {
       )
     } else {
       return (
-        <p role="link" className="login-link" onClick={() => this.props.logout}>
-          Log out
-        </p>
+        <p role="link" className="login-link" onClick={() => this.props.logout}>Log out</p>
       )
     }
   }
@@ -42,7 +41,6 @@ class Header extends Component {
   }
 
   render() {
-    console.log(this.props.user)
     const form = this.getFormType();
     const loginLink = this.getLink();
     
@@ -69,4 +67,11 @@ class Header extends Component {
 
 export const mapStateToProps = state => ({ user: state.user });
 
-export default connect(mapStateToProps)(Header);
+export const mapDispatchToProps = dispatch => {
+  return {
+    login: user => dispatch(login(user)),
+    logout: () => dispatch(logout())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

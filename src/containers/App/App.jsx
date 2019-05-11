@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../../components/Header/Header';
 import Navigation from '../../components/Navigation/Navigation';
+import ResultsScreen from '../../containers/ResultsScreen/ResultsScreen';
 import MovieContainer from '../MovieContainer/MovieContainer';
 import MovieDetails from '../../components/MovieDetails/MovieDetails';
 import HomeScreen from '../HomeScreen/HomeScreen';
@@ -16,8 +17,11 @@ class App extends Component {
 					<Navigation />
 					<main className="main-content">
 						<Switch>
-							<Route exact path="/" component={HomeScreen} />
-							<Route exact path="/:section" component={MovieContainer} />
+              <Route exact path="/" component={HomeScreen} />
+              <Route exact
+                     path="/:id"
+                     component={({ match }) => <ResultsScreen section={match.params.id} />}
+              />
 							<Route
 								exact
 								path="/title/:id"
