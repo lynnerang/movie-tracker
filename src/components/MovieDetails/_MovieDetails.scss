@@ -1,10 +1,12 @@
 @import '../../variables.scss';
 
 .MovieDetails {
-	min-height: 100vh;
+	height: 100vh;
 	width: calc(100vw - #{$nav-width});
 	position: relative;
 	color: white;
+	z-index: 2;
+	overflow: scroll;
 }
 
 .MovieDetails-content {

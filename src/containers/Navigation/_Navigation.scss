@@ -26,13 +26,15 @@
 
 .nav-link {
   font-weight: 300;
-  font-size: 14px;
   color: rgba(255, 255, 255, 0.701);
   padding-left: 5px;
   text-decoration: none;
   margin-top: 0;
   margin-bottom: 8px;
+  display: flex;
+  align-items: center;
 }
+
 
 .nav-link:hover {
   color: rgba(255, 255, 255, 0.906);
@@ -46,7 +48,7 @@
 .fas,
 .fa-home {
   padding-right: 4px;
-  font-size: 12px;
+  font-size: 14px;
   width: 20px;
 }
 

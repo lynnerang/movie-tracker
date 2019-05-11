@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { cleanMovieDetails } from '../../util/cleaners';
+import Loader from '../Loader/Loader';
 import './_MovieDetails.scss';
 
 class MovieDetails extends Component {
@@ -42,7 +43,7 @@ class MovieDetails extends Component {
 		return (
 			<section className="MovieDetails">
 				{this.state.loading ? (
-					<h1>Loading...</h1>
+					<Loader />
 				) : (
 					<div>
 						<div className="MovieDetails-backdrop">
