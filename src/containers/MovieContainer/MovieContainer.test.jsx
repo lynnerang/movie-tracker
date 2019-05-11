@@ -1,15 +1,15 @@
 import React from 'react';
-import Poster from './Poster';
+import MovieContainer from './MovieContainer';
 import Enzyme, { shallow } from 'enzyme';
 import { mockMovies } from '../../util/mockData/mockData';
 import Adapter from 'enzyme-adapter-react-16';
 Enzyme.configure({ adapter: new Adapter() })
 
-describe('Poster', () => {
+describe('MovieContainer', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<Poster key={mockMovies[0].id}/>)
+    wrapper = shallow(<MovieContainer movies={mockMovies}/>)
   })
 
   it('Should match the snapshot', () => {
@@ -17,5 +17,3 @@ describe('Poster', () => {
   });
 
 })
-
-

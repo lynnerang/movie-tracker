@@ -13,7 +13,8 @@ export const MovieContainer = props => {
         <Poster containerType={props.type} size={props.section} key={movie.id} {...movie} />
 			</Link>
 		);
-	});
+  });
+  
 	return (
 		<section className="MovieContainer">
 			<h2 className="MovieContainer-title">{props.section}</h2>
