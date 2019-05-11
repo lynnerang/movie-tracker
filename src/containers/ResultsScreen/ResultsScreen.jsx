@@ -1,16 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import MovieContainer from '../MovieContainer/MovieContainer';
 import { connect } from 'react-redux';
 
-class ResultsScreen extends Component {
-  render() {
+
+const ResultsScreen = props => {
     return (
-        <MovieContainer movies={this.props[this.props.section]}
-                        section={this.props.section}
+        <MovieContainer movies={props[props.section]}
+                        section={props.section}
                         type='grid'
         />
     );
-  }
 }
 
 const mapStateToProps = state => {

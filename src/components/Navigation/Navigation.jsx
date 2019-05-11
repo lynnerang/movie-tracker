@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const Navigation = props => {
+  console.log(window.location.pathname)
   let userNav = props.user.email &&
     <nav className="nav-section my-lists">
       <h4 className="nav-header">MY LISTS</h4>
@@ -18,6 +19,21 @@ const Navigation = props => {
       <NavLink className="nav-link" exact to="/reviewed">
         <i className="fas fa-clipboard-check"></i>Reviewed
 			</NavLink>
+    </nav>;
+  
+  let filterNav = 
+    // find way to add condition around window pathname
+    <nav className="nav-section filter">
+      <h4 className="nav-header">FILTERS</h4>
+      <p role="link" className="nav-link" name="Trending">
+        <i className="fas fa-plus"></i>Genre
+				</p>
+      <p role="link" className="nav-link" name="Top rated">
+        <i className="fas fa-plus"></i>Avg rating
+				</p>
+      <p role="link" className="nav-link" name="In theatres">
+        <i className="fas fa-plus"></i>Release Year
+				</p>
     </nav>;
 
 	return (
@@ -43,18 +59,7 @@ const Navigation = props => {
 				</NavLink>
       </nav>
       {userNav}
-      <nav className="nav-section filter">
-        <h4 className="nav-header">FILTERS</h4>
-        <p role="link" className="nav-link" name="Trending">
-          <i className="fas fa-plus"></i>Genre
-				</p>
-        <p role="link" className="nav-link" name="Top rated">
-          <i className="fas fa-plus"></i>Avg rating
-				</p>
-        <p role="link" className="nav-link" name="In theatres">
-          <i className="fas fa-plus"></i>Release Year
-				</p>
-      </nav>
+      {filterNav}
 		</aside>
 	);
 };

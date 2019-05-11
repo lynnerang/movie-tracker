@@ -9,7 +9,7 @@ export const MovieContainer = props => {
 
 	const posters = props.movies.map(movie => {
 		return (
-			<Link className="poster-link" to={`/title/${movie.id}`} key={movie.id}>
+			<Link className="poster-link" to={`/movies/${movie.id}`} key={movie.id}>
         <Poster containerType={props.type} size={props.section} key={movie.id} {...movie} />
 			</Link>
 		);
