@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import UserForm from '../../containers/UserForm/UserForm';
+import { connect } from 'react-redux';
 
 class Header extends Component {
 	state = {
@@ -10,17 +11,41 @@ class Header extends Component {
 
 	closeUserForm = () => {
 		this.setState({ showLogin: false, showSignup: false });
-	};
+  };
+  
+  getLink = () => {
+    if (!this.props.user.email) {
+      return (
+        <>
+          <p role="link" className="login-link" onClick={() => this.setState({ showSignup: false, showLogin: true })}>Login</p>
+          /
+          <p role="link" className="login-link" onClick={() => this.setState({ showLogin: false, showSignup: true })}>Sign Up</p>
+        </>
+      )
+    } else {
+      return (
+        <p role="link" className="login-link" onClick={() => this.props.logout}>
+          Log out
+        </p>
+      )
+    }
+  }
 
-	render() {
-		let form = null;
+  getFormType = () => {
+    if (this.state.showLogin) {
+      return <UserForm type="Log In" closeUserForm={this.closeUserForm} />;
+    } else if (this.state.showSignup) {
+      return <UserForm type="Sign Up" closeUserForm={this.closeUserForm} />;
+    } else {
+      return null;
+    }
+  }
 
-		if (this.state.showLogin) {
-			form = <UserForm type="Log In" closeUserForm={this.closeUserForm} />;
-		} else if (this.state.showSignup) {
-			form = <UserForm type="Sign Up" closeUserForm={this.closeUserForm} />;
-		}
-
+  render() {
+    console.log(this.props.user)
+    const form = this.getFormType();
+    const loginLink = this.getLink();
+    
 		return (
 			<header className="top-bar">
 				{form}
@@ -34,13 +59,7 @@ class Header extends Component {
 						<i className="fas fa-search" />
 					</div>
 					<div className="user-links">
-						<p role="link" className="login-link" onClick={() => this.setState({ showSignup: false, showLogin: true })}>
-							Login
-						</p>
-						/
-						<p role="link" className="login-link" onClick={() => this.setState({ showLogin: false, showSignup: true })}>
-							Sign Up
-						</p>
+            {loginLink}
 					</div>
 				</div>
 			</header>
@@ -48,4 +67,6 @@ class Header extends Component {
 	}
 }
 
-export default Header;
+export const mapStateToProps = state => ({ user: state.user });
+
+export default connect(mapStateToProps)(Header);
