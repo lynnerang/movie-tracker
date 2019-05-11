@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import UserForm from '../../containers/UserForm/UserForm';
+import UserForm from '../UserForm/UserForm';
 import { connect } from 'react-redux';
 import { login, logout } from '../../actions'
 
@@ -25,7 +25,7 @@ class Header extends Component {
       )
     } else {
       return (
-        <p role="link" className="login-link" onClick={() => this.props.logout}>Log out</p>
+        <p role="link" className="login-link" onClick={this.props.logout}>Log out</p>
       )
     }
   }

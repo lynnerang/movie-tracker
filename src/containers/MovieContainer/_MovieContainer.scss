@@ -6,9 +6,10 @@
 
 .MovieContainer-wrap {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 200px);
-  grid-column-gap: 25px;
+  grid-template-columns: repeat(auto-fill, minMax(185px, 1fr));
+  // grid-column-gap: 25px;
   overflow: hidden;
+  // padding: 15px;
 }
 
 .MovieContainer-title {
@@ -27,7 +28,6 @@
   display: flex;
   padding: 5px 0px;
   overflow-x: scroll;
-  max-width: calc(100vw - #{$nav-width});
 }
 
 .poster-link {
