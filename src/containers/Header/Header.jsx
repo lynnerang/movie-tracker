@@ -13,6 +13,11 @@ class Header extends Component {
 	closeUserForm = () => {
 		this.setState({ showLogin: false, showSignup: false });
   };
+
+  logUserOut = () => {
+    localStorage.setItem('user', JSON.stringify({ email: '', password: '' }))
+    this.props.logout();
+  }
   
   getLink = () => {
     if (!this.props.user.email) {
@@ -25,7 +30,7 @@ class Header extends Component {
       )
     } else {
       return (
-        <p role="link" className="login-link" onClick={this.props.logout}>Log out</p>
+        <p role="link" className="login-link" onClick={this.state.logUserOut}>Log out</p>
       )
     }
   }
