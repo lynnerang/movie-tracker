@@ -1,7 +1,25 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-const Navigation = () => {
+const Navigation = props => {
+  let userNav = props.user.email &&
+    <nav className="nav-section my-lists">
+      <h4 className="nav-header">MY LISTS</h4>
+      <NavLink className="nav-link" exact to="/favorites">
+        <i className="fas fa-star"></i>Favorites
+				</NavLink>
+      <NavLink className="nav-link" exact to="/watchlist">
+        <i className="fas fa-eye"></i>Watchlist
+				</NavLink>
+      <NavLink className="nav-link" exact to="/avoidlist">
+        <i className="fas fa-hand-paper"></i>Avoidlist
+				</NavLink>
+      <NavLink className="nav-link" exact to="/reviewed">
+        <i className="fas fa-clipboard-check"></i>Reviewed
+				</NavLink>
+    </nav>;
+
 	return (
     <aside className="Navigation">
       <nav className="nav-section">
@@ -24,23 +42,11 @@ const Navigation = () => {
           <i className="fas fa-certificate"></i>Upcoming
 				</NavLink>
       </nav>
-      <nav className="nav-section my-lists">
-        <h4 className="nav-header">MY LISTS</h4>
-        <NavLink className="nav-link" exact to="/favorites">
-          <i className="fas fa-star"></i>Favorites
-				</NavLink>
-        <NavLink className="nav-link" exact to="/watchlist">
-          <i className="fas fa-eye"></i>Watchlist
-				</NavLink>
-        <NavLink className="nav-link" exact to="/avoidlist">
-          <i className="fas fa-hand-paper"></i>Avoidlist
-				</NavLink>
-        <NavLink className="nav-link" exact to="/reviewed">
-          <i className="fas fa-clipboard-check"></i>Reviewed
-				</NavLink>
-      </nav>
+      {userNav}
 		</aside>
 	);
 };
 
-export default Navigation;
+const mapStateToProps = state => ({user: state.user});
+
+export default connect(mapStateToProps)(Navigation);

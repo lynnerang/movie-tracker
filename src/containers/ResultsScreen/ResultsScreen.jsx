@@ -5,12 +5,10 @@ import { connect } from 'react-redux';
 class ResultsScreen extends Component {
   render() {
     return (
-      <>
         <MovieContainer movies={this.props[this.props.section]}
                         section={this.props.section}
                         type='grid'
         />
-      </>
     );
   }
 }
