@@ -2,8 +2,8 @@ import React from 'react';
 import './_Poster.scss';
 
 const Poster = props => {
-  const classes = props.size === 'trending' ? 'Poster trending'
-    : 'Poster';
+  const classes = props.size === 'trending' && props.containerType !== 'grid'
+    ? 'Poster trending' : 'Poster';
 
 	return (
 		<article className={classes}>
