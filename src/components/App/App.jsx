@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Header from '../../components/Header/Header';
-import Navigation from '../../components/Navigation/Navigation';
+import Header from '../../containers/Header/Header';
+import Navigation from '../../containers/Navigation/Navigation';
 import ResultsScreen from '../../containers/ResultsScreen/ResultsScreen';
-import MovieDetails from '../../components/MovieDetails/MovieDetails';
-import HomeScreen from '../HomeScreen/HomeScreen';
+import MovieDetails from '../MovieDetails/MovieDetails';
+import HomeScreen from '../../containers/HomeScreen/HomeScreen';
 import { Switch, Route } from 'react-router-dom';
 import './_App.scss';
 

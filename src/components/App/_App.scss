@@ -1,9 +1,9 @@
 @import '../../variables.scss';
-@import '../../components/Header/_Header.scss';
-@import '../../components/Navigation/_Navigation.scss';
-@import '../../components/Poster/_Poster.scss';
+@import '../../containers/Header/_Header.scss';
+@import '../../containers/Navigation/_Navigation.scss';
 @import '../../containers/MovieContainer/_MovieContainer.scss';
 @import '../../containers/UserForm/_UserForm.scss';
+@import '../Poster/Poster;
 
 
 .App {

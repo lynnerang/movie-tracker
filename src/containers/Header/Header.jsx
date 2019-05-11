@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import UserForm from '../../containers/UserForm/UserForm';
+import UserForm from '../UserForm/UserForm';
 import { connect } from 'react-redux';
 import { login, logout } from '../../actions'
 

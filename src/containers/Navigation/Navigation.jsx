@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const Navigation = props => {
-  console.log(window.location.pathname)
   let userNav = props.user.email &&
     <nav className="nav-section my-lists">
       <h4 className="nav-header">MY LISTS</h4>
