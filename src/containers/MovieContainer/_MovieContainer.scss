@@ -4,16 +4,14 @@
 	text-align: left;
 }
 
-.MovieContainer-section-wrap {
+.MovieContainer-wrap {
   display: grid;
-  border: 1px solid red;
-  grid-template-columns: repeat(auto-fill, 225px);
+  grid-template-columns: repeat(auto-fill, 200px);
   grid-column-gap: 25px;
   overflow: hidden;
-  padding: 15px;
 }
 
-.MovieContainer-section-title {
+.MovieContainer-title {
   font-size: 15px;
   margin-bottom: 5px;
   font-weight: 600;
@@ -25,7 +23,7 @@
   }
 }
 
-.MovieContainer-section-row {
+.MovieContainer-row {
   display: flex;
   padding: 5px 0px;
   overflow-x: scroll;

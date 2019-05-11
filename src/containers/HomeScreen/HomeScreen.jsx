@@ -55,7 +55,7 @@ class HomeScreen extends Component {
 		}
 	};
 
-	render() {
+  render() {
 		return (
 			<>
 				<MovieContainer movies={this.props.trendingMovies} section="trending" />
