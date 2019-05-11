@@ -26,16 +26,16 @@ const Navigation = () => {
       </nav>
       <nav className="nav-section my-lists">
         <h4 className="nav-header">MY LISTS</h4>
-        <NavLink className="nav-link" exact to="/trending">
+        <NavLink className="nav-link" exact to="/favorites">
           <i className="fas fa-star"></i>Favorites
 				</NavLink>
-        <NavLink className="nav-link" exact to="/top_rated">
+        <NavLink className="nav-link" exact to="/watchlist">
           <i className="fas fa-eye"></i>Watchlist
 				</NavLink>
-        <NavLink className="nav-link" exact to="/now_playing">
+        <NavLink className="nav-link" exact to="/avoidlist">
           <i className="fas fa-hand-paper"></i>Avoidlist
 				</NavLink>
-        <NavLink className="nav-link" exact to="/upcoming">
+        <NavLink className="nav-link" exact to="/reviewed">
           <i className="fas fa-clipboard-check"></i>Reviewed
 				</NavLink>
       </nav>

@@ -4,10 +4,12 @@ import { connect } from 'react-redux';
 
 class ResultsScreen extends Component {
   render() {
-    console.log(this.props.section)
     return (
       <>
-        <MovieContainer movies={this.props[this.props.section]} section={this.props.section} type='grid' />
+        <MovieContainer movies={this.props[this.props.section]}
+                        section={this.props.section}
+                        type='grid'
+        />
       </>
     );
   }
@@ -22,10 +24,4 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ResultsScreen);
+export default connect(mapStateToProps)(ResultsScreen);
