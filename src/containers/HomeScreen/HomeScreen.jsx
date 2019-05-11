@@ -8,14 +8,6 @@ import './_HomeScreen.scss';
 
 class HomeScreen extends Component {
 
-	constructor(props) {
-	  super(props);
-	  this.state = {
-      authenticated: false,
-      newUser: false
-	  }
-	}
-
 	componentDidMount() {
 		this.getMovies('popular');
 		this.getMovies('top_rated');

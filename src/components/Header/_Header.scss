@@ -2,7 +2,7 @@
 
 .top-bar {
   background: #484F51;
-  max-height: $header-height;
+  height: 40px;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -24,13 +24,14 @@
 }
 
 .logo-img {
-  height: 30px;
-  padding: 0px 8px 5px 12px;
+  height: 25px;
+  margin-bottom: 2px;
+  padding: 0px 8px 0px 12px;
 }
 
 .logo-text {
-  margin-top: 3px;
-  font-size: 28px;
+  font-size: 26px;
+  margin-top: 2px;
   font-weight: 400;
   color: white;
   font-family: 'Rajdhani', sans-serif;
@@ -58,21 +59,27 @@
 .fa-search {
   color: rgba(128, 128, 128, 0.619);
   position: absolute;
-  top: 6px;
-  right: 6px;
+  top: 7px;
+  right: 3px;
   font-size: 14px;
+}
+
+.user-links {
+  display: flex;
+  color: $highlight;
+  margin-right: 20px;
 }
 
 .login-link {
-  margin: 0;
+  margin: 0 8px;
   padding: 0;
-  margin-right: 20px;
   font-size: 14px;
   color: rgba(255, 255, 255, 0.79);
-
-  &:hover {
-    cursor: pointer;
-    color: white;
-  }
 }
+
+.login-link:hover {
+  cursor: pointer;
+  color: white;
+}
+
 
