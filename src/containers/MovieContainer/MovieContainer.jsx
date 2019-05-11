@@ -7,7 +7,7 @@ export const MovieContainer = props => {
   const display = props.type === 'grid' ? 'MovieContainer-wrap'
     : 'MovieContainer-row';
 
-	const posters = props.movies.slice(0, 6).map(movie => {
+	const posters = props.movies.map(movie => {
 		return (
 			<Link className="poster-link" to={`/title/${movie.id}`} key={movie.id}>
         <Poster containerType={props.type} size={props.section} key={movie.id} {...movie} />
