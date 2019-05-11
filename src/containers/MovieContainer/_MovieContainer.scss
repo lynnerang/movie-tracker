@@ -1,3 +1,5 @@
+@import '../../variables.scss';
+
 .MovieContainer {
 	text-align: left;
 }
@@ -12,9 +14,11 @@
 }
 
 .MovieContainer-section-title {
-  font-size: 18px;
-  margin-bottom: 0;
-  font-weight: 400;
+  font-size: 15px;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: $faint-white;
+  margin-top: 10px;
 
   &::first-letter {
     text-transform: uppercase;
@@ -23,10 +27,16 @@
 
 .MovieContainer-section-row {
   display: flex;
-  padding: 15px;
+  padding: 5px 0px;
   overflow-x: scroll;
+  max-width: calc(100vw - #{$nav-width});
 }
 
-.trending {
-	// border: 1px solid blue;
+.poster-link {
+  text-decoration: none;
+
+  &:hover {
+      color: $highlight;
+  }
 }
+
