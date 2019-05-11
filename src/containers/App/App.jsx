@@ -18,7 +18,7 @@ class App extends Component {
 						<Switch>
               <Route exact path="/" component={HomeScreen} />
               <Route exact
-                     path="/:id"
+                     path="/category/:id"
                      component={({ match }) => <ResultsScreen section={match.params.id} />}
               />
 							<Route
