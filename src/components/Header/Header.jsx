@@ -25,7 +25,7 @@ class Header extends Component {
       )
     } else {
       return (
-        <p role="link" className="login-link" onClick={() => this.props.logout}>Log out</p>
+        <p role="link" className="login-link" onClick={this.props.logout}>Log out</p>
       )
     }
   }
