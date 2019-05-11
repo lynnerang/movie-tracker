@@ -6,8 +6,7 @@ class Login extends Component {
 	state = {
 		name: '',
 		email: '',
-		password: '',
-		error: ''
+		password: ''
 	};
 
 	handleChange = e => {
@@ -15,10 +14,11 @@ class Login extends Component {
 		this.setState({ [name]: value });
 	};
 
-	handleSubmit = (e, name) => {
+	handleSubmit = e => {
 		e.preventDefault();
-		const { email, password } = this.state;
-		let body, dir;
+		const { name, email, password } = this.state;
+    let body;
+    let dir = '';
 
 		if (this.props.type === 'Log In') {
 			body = { email, password };
@@ -29,20 +29,29 @@ class Login extends Component {
 		this.fetchUser(body, dir);
 	};
 
-	fetchUser = async (body, dir) => {
+  fetchUser = async (body, dir) => {
+    console.log(body, dir)
 		try {
 			const res = await fetch(`http://localhost:3000/api/users/${dir}`, {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify(body)
 			});
-			const json = await res.json();
-			const user = json.data;
-			this.props.login(user);
+      const result = await res.json();
+      console.log(result)
+      this.logIn(result, dir, body);
+
 		} catch (err) {
 			console.log(err.status, err.message);
 		}
-	};
+  };
+  
+  logIn = (result, dir, body) => {
+    dir !== 'new' ? this.props.login(result.data)
+      : this.fetchUser({ email: body.email, password: body.password }, '');
+    
+    this.setState({ name: '', email: '', password: '' });
+  }
 
   render() {
     const name = this.props.type !== 'Log In' &&
