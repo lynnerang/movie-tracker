@@ -3,8 +3,7 @@
 @import '../../containers/Navigation/_Navigation.scss';
 @import '../../containers/MovieContainer/_MovieContainer.scss';
 @import '../../containers/UserForm/_UserForm.scss';
-@import '../Poster/Poster;
-
+@import '../Poster/Poster';
 
 .App {
   min-width: 100vw;
@@ -21,6 +20,6 @@
 .main-content {
   width: calc(100vw - #{$nav-width});
   margin-left: $nav-width;
-  padding: 5px 0px 25px 25px;
   background: $bg-gradient, url('../../images/main-bg.png');
+  object-fit: cover;
 }

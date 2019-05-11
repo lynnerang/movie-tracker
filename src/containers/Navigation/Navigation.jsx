@@ -31,7 +31,7 @@ const Navigation = props => {
         <i className="fas fa-plus"></i>Avg rating
 				</p>
       <p role="link" className="nav-link" name="In theatres">
-        <i className="fas fa-plus"></i>Release Year
+        <i className="fas fa-plus"></i>Year
 				</p>
     </nav>;
 

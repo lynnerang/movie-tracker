@@ -5,28 +5,30 @@
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-  text-align: center;
+	text-align: center;
   margin-right: 10px;
+  height: 100%;
 
-  &.trending {
-    width: 250px; 
-    
-    .Poster-poster,
-    .Poster-title {
-      width: 250px;
-      font-size: 17px;
-    }
-  }
+	&.trending {
+		width: 250px;
 
-  &:hover {
-    .Poster-title {
-      color: $highlight;
-    }
+		.Poster-poster,
+		.Poster-title {
+			width: 250px;
+			font-size: 17px;
+		}
+	}
 
-    .Poster-poster {
-      border-color: $highlight;
-    }
-  }
+	&:hover {
+		.Poster-title {
+			color: $highlight;
+		}
+
+		.Poster-poster {
+			border-color: $highlight;
+		}
+	}
+
 }
 
 .Poster-poster {
@@ -36,15 +38,12 @@
 
 .Poster-title {
 	margin: 2px 0 10px 0;
-  width: 185px;
+	width: 185px;
 	overflow: hidden;
 	white-space: nowrap;
-  text-overflow: ellipsis;
-  text-decoration: none;
-  font-size: 15px;
-  color: $faint-white;
-  font-weight: 300;
-  text-align: left;
+	text-overflow: ellipsis;
+	text-decoration: none;
+	color: $faint-white;
+	font-weight: 300;
+	text-align: left;
 }
-
-
