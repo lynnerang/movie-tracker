@@ -25,7 +25,6 @@ const App = () => {
               path="/movies/:id"
               component={({ match }) => <MovieDetails id={match.params.id} key={match.params.id} />}
             />
-            {/* <Route exact path="/movies/:id" component={MovieDetails} /> */}
           </Switch>
         </main>
       </div>

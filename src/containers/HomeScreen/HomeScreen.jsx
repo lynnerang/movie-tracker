@@ -12,8 +12,16 @@ class HomeScreen extends Component {
 		this.getMovies('popular');
 		this.getMovies('top_rated');
 		this.getMovies('now_playing');
-		this.getMovies('upcoming');
-	}
+    this.getMovies('upcoming');
+    this.checkLogin();
+  }
+  
+  checkLogin = () => {
+    const user = JSON.parse(localStorage.getItem('user')) || {};
+    if (user.email) {
+      this.props.login(user);
+    }
+  }
 
 	getMovies = async path => {
 		try {
@@ -72,7 +80,8 @@ const mapStateToProps = state => {
 		trendingMovies: state.trendingMovies,
 		topRatedMovies: state.topRatedMovies,
 		nowPlayingMovies: state.nowPlayingMovies,
-		upcomingMovies: state.upcomingMovies
+    upcomingMovies: state.upcomingMovies,
+    user: state.user
 	};
 };
 
@@ -81,7 +90,8 @@ const mapDispatchToProps = dispatch => {
 		addTrendingMovies: movies => dispatch(actions.addTrendingMovies(movies)),
 		addTopRatedMovies: movies => dispatch(actions.addTopRatedMovies(movies)),
 		addNowPlayingMovies: movies => dispatch(actions.addNowPlayingMovies(movies)),
-		addUpcomingMovies: movies => dispatch(actions.addUpcomingMovies(movies))
+    addUpcomingMovies: movies => dispatch(actions.addUpcomingMovies(movies)),
+    login: user => dispatch(actions.login(user))
 	};
 };
 

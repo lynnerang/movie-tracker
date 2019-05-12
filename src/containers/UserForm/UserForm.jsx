@@ -93,8 +93,13 @@ class Login extends Component {
   };
   
   logUserIn = (result, body) => {
-    this.props.type === 'Log In' ? this.props.login(result.data)
-      : this.props.login({ id: result.id, email: body.email, name: body.name });
+    if (this.props.type === 'Log In') {
+      this.props.login(result.data);
+      localStorage.setItem('user', JSON.stringify(result.data));
+    } else {
+      this.props.login({ id: result.id, email: body.email, name: body.name });
+      localStorage.setItem('user', JSON.stringify({ id: result.id, email: body.email, name: body.name }));
+    }
     
     this.setState({ name: '', email: '', password: '', showConfirm: true });
     setTimeout(() => this.props.closeUserForm(), 2000);
