@@ -5,9 +5,7 @@ import { getMovies } from '../../thunks/getMovies';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import Enzyme, { shallow } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
 import { mockPath, mockProps, mockState, mockUser } from '../../util/mockData/mockData';
-Enzyme.configure({ adapter: new Adapter() });
 
 jest.mock('../../thunks/getMovies');
 

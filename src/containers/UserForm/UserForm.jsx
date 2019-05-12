@@ -3,7 +3,7 @@ import { login, logout } from '../../actions';
 import { connect } from 'react-redux';
 import { fetchUser } from '../../util/api';
 
-class Login extends Component {
+export class UserForm extends Component {
 	state = {
 		name: '',
 		email: '',
@@ -132,4 +132,4 @@ export const mapDispatchToProps = dispatch => {
 	};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(UserForm);
