@@ -31,3 +31,17 @@ export const mockPost = {
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({ email: mockUser.email, password: mockUser.password })
 };
+
+export const mockPath = 'popular';
+
+export const mockMovies = [
+  {
+    id: 456740,
+    poster: "https://image.tmdb.org/t/p/w300/bk8LyaMqUtaQ9hUShuvFznQYQKR.jpg",
+    title: "Hellboy",
+  }, {
+    id: 447404,
+    poster: "https://image.tmdb.org/t/p/w300/wgQ7APnFpf1TuviKHXeEe3KnsTV.jpg",
+    title: "Pokémon Detective Pikachu"
+  }
+]
