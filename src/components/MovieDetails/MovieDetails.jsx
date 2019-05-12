@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { cleanMovieDetails } from '../../util/cleaners';
-import {addFavorite} from '../../util/api';
+import { addFavorite, deleteFavorite } from '../../util/api';
 import Loader from '../Loader/Loader';
 import './_MovieDetails.scss';
 
@@ -27,6 +27,19 @@ class MovieDetails extends Component {
 
 	handleClick = () => {
 		this.addFavorite();
+	};
+
+	deleteFavorite = async () => {
+		const body = {
+			user_id: this.props.user.id,
+			movie_id: this.state.details.movie.id
+		};
+		try {
+			const res = await deleteFavorite(body);
+			console.log(res);
+		} catch (err) {
+			console.log(err);
+		}
 	};
 
 	addFavorite = async () => {
