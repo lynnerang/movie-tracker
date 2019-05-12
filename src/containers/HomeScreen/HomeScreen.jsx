@@ -5,7 +5,7 @@ import { getMovies } from '../../thunks/getMovies';
 import { connect } from 'react-redux';
 import './_HomeScreen.scss';
 
-class HomeScreen extends Component {
+export class HomeScreen extends Component {
 
 	componentDidMount() {
 		this.props.getMovies('popular', this.props);

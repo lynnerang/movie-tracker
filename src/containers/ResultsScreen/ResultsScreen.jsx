@@ -2,7 +2,7 @@ import React from 'react';
 import MovieContainer from '../MovieContainer/MovieContainer';
 import { connect } from 'react-redux';
 
-const ResultsScreen = props => {
+export const ResultsScreen = props => {
 	return <MovieContainer movies={props[props.section]} section={props.section} type="grid" />;
 };
 
