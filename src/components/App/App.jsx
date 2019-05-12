@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Header from '../../containers/Header/Header';
 import Navigation from '../../containers/Navigation/Navigation';
 import ResultsScreen from '../../containers/ResultsScreen/ResultsScreen';
