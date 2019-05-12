@@ -78,7 +78,7 @@ class Login extends Component {
     const { name, email, password } = this.state;
     
 		this.props.type === 'Log In' ? this.getUser({email, password}, '')
-      : this.getUser({name, email, password}, 'new');
+      : this.getUser({ name, email, password }, 'new');
 	};
 
   getUser = async (body, dir) => {

@@ -89,6 +89,6 @@ class Navigation extends Component {
   }
 };
 
-const mapStateToProps = state => ({user: state.user});
+const mapStateToProps = state => ({ user: state.user });
 
 export default connect(mapStateToProps)(Navigation);

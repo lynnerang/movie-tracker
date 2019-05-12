@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { cleanMovieDetails } from '../../util/cleaners';
+import {addFavorite} from '../../util/api';
 import Loader from '../Loader/Loader';
 import './_MovieDetails.scss';
 
@@ -23,6 +25,30 @@ class MovieDetails extends Component {
 		});
 	}
 
+	handleClick = () => {
+		this.addFavorite();
+	};
+
+	addFavorite = async () => {
+		const { title, releaseDate, poster, id, rating, description } = this.state.details;
+		const body = {
+			movie_id: id,
+			user_id: this.props.user.id,
+			poster_path: poster,
+			release_date: releaseDate,
+			vote_average: rating,
+			title,
+			overview: description
+		};
+
+		try {
+			const res = await addFavorite(body);
+			console.log(res);
+		} catch (err) {
+			console.log(err);
+		}
+	};
+
 	render() {
 		const {
 			title,
@@ -31,7 +57,6 @@ class MovieDetails extends Component {
 			poster,
 			backdrop,
 			genres,
-			// id,
 			rating,
 			language,
 			description,
@@ -58,7 +83,12 @@ class MovieDetails extends Component {
 									</span>
 								</h1>
 								<div className="MovieDetails-genres">
-									{genres && genres.map(g => <p className="MovieDetails-genre">{g}</p>)}
+									{genres &&
+										genres.map((g, i) => (
+											<p className="MovieDetails-genre" key={i}>
+												{g}
+											</p>
+										))}
 								</div>
 							</header>
 							<div className="MovieDetails-grid">
@@ -77,6 +107,7 @@ class MovieDetails extends Component {
 										<p className="metadata-info">{popularity}</p>
 										<p className="metadata-header">Box Office Gross: </p>
 										<p className="metadata-info">${boxOffice}</p>
+										{this.props.user.email && <button onClick={this.handleClick}>Favorite</button>}
 									</div>
 								</main>
 								<section className="MovieDetails-similar">
@@ -91,4 +122,14 @@ class MovieDetails extends Component {
 	}
 }
 
-export default MovieDetails;
+export const mapStateToProps = state => {
+	return {
+		user: state.user
+	};
+};
+
+export const mapDispatchToProps = dispatch => {
+	return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieDetails);

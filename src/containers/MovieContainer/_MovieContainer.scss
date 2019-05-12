@@ -1,42 +1,40 @@
 @import '../../variables.scss';
 
 .MovieContainer {
-  text-align: left;
-  padding: 25px;
+	text-align: left;
+	padding: 25px 25px 0 25px;
 }
 
 .MovieContainer-wrap {
-  padding: 15px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 185px);
-  grid-column-gap: 25px;
-  overflow: hidden;
-  // padding: 15px;
+	padding: 5px;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, 185px);
+	grid-column-gap: 25px;
+	overflow: hidden;
 }
 
 .MovieContainer-title {
-  font-size: 25px;
-  margin-bottom: 5px;
-  font-weight: 600;
-  color: $faint-white;
-  margin: 0;
+	font-size: 25px;
+	margin-bottom: 5px;
+	font-weight: 600;
+	color: $faint-white;
+	margin: 0;
 
-  &::first-letter {
-    text-transform: uppercase;
-  }
+	&::first-letter {
+		text-transform: uppercase;
+	}
 }
 
 .MovieContainer-row {
-  display: flex;
-  padding: 5px 0px;
-  overflow-x: scroll;
+	display: flex;
+	padding: 5px 0px;
+	overflow-x: scroll;
 }
 
 .poster-link {
-  text-decoration: none;
+	text-decoration: none;
 
-  &:hover {
-      color: $highlight;
-  }
+	&:hover {
+		color: $highlight;
+	}
 }
-
