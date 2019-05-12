@@ -1,49 +1,70 @@
 import React from 'react';
 import HomeScreen, { mapStateToProps, mapDispatchToProps } from './HomeScreen';
+import { login } from '../../actions';
 import { getMovies } from '../../thunks/getMovies';
-import { Provider } from "react-redux";
-import configureMockStore from "redux-mock-store";
+import { Provider } from 'react-redux';
+import configureMockStore from 'redux-mock-store';
 import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import { mockPath, mockProps, mockState } from '../../util/mockData/mockData';
-Enzyme.configure({ adapter: new Adapter() })
+import { mockPath, mockProps, mockState, mockUser } from '../../util/mockData/mockData';
+Enzyme.configure({ adapter: new Adapter() });
 
-jest.mock('../../thunks/getMovies') 
+jest.mock('../../thunks/getMovies');
 
 const mockStore = configureMockStore();
 const store = mockStore({});
-
+const localStorageMock = {
+	getItem: JSON.stringify(mockUser)
+};
+global.localStorage = localStorageMock;
 
 describe('HomeScreen', () => {
-  let wrapper;
+	let wrapper;
 
-  beforeEach(() => {
-    wrapper = shallow(<Provider store={store}><HomeScreen /></Provider>)
-  })
+	beforeEach(() => {
+		wrapper = shallow(
+			<Provider store={store}>
+				<HomeScreen />
+			</Provider>
+		);
+	});
 
-  it('Should match the snapshot', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
+	it('Should match the snapshot', () => {
+		expect(wrapper).toMatchSnapshot();
+	});
 
-  describe('mapStateToProps', () => {
-    it('should return an object with an array of movies', () => {
-      const expected = mockState;
-      const mappedProps = mapStateToProps(mockState)
+	it('should check if a user is currently logged in on page refresh, and call the login action with their data if so', () => {
+		wrapper.instance().checkLogin();
+	});
 
-      expect(mappedProps).toEqual(expected)
-    })
-  })
+	describe('mapStateToProps', () => {
+		it('should return an object with an array of movies', () => {
+			const expected = mockState;
+			const mappedProps = mapStateToProps(mockState);
 
-  describe('mapDispatchToProps', () => {
-    it('calls dispatch with a getMovies action when getMovies is called', () => {
-      const mockDispatch = jest.fn();
-      const actionToDispatch = getMovies(mockPath, mockProps);
-      const mappedProps = mapDispatchToProps(mockDispatch);
+			expect(mappedProps).toEqual(expected);
+		});
+	});
 
-      mappedProps.getMovies(mockPath, mockProps);
+	describe('mapDispatchToProps', () => {
+		it('calls dispatch with a getMovies action when getMovies is called', () => {
+			const mockDispatch = jest.fn();
+			const actionToDispatch = getMovies(mockPath, mockProps);
+			const mappedProps = mapDispatchToProps(mockDispatch);
 
-      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
-    })
-  })
+			mappedProps.getMovies(mockPath, mockProps);
 
+			expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+		});
+
+		it('calls dispatch with a login action when login is called', () => {
+			const mockDispatch = jest.fn();
+			const actionToDispatch = login(mockUser);
+			const mappedProps = mapDispatchToProps(mockDispatch);
+
+			mappedProps.login(mockUser);
+
+			expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+		});
+	});
 });

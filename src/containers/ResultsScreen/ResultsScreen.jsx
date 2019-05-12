@@ -3,11 +3,10 @@ import MovieContainer from '../MovieContainer/MovieContainer';
 import { connect } from 'react-redux';
 
 const ResultsScreen = props => {
-  console.log(props.section);
 	return <MovieContainer movies={props[props.section]} section={props.section} type="grid" />;
 };
 
-const mapStateToProps = state => {
+export const mapStateToProps = state => {
 	return {
 		trending: state.trendingMovies,
 		top_rated: state.topRatedMovies,
