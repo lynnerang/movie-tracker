@@ -5,6 +5,7 @@ import ResultsScreen from '../../containers/ResultsScreen/ResultsScreen';
 import MovieDetails from '../MovieDetails/MovieDetails';
 import HomeScreen from '../../containers/HomeScreen/HomeScreen';
 import { Switch, Route } from 'react-router-dom';
+import Error from '../Error/Error';
 import './_App.scss';
 
 const App = () => {
@@ -22,11 +23,12 @@ const App = () => {
 							path="/movies/:id"
 							component={({ match }) => <MovieDetails id={match.params.id} key={match.params.id} />}
 						/>
+						<Route render={Error} />} />
 					</Switch>
 				</main>
 			</div>
 		</section>
 	);
- };
+};
 
 export default App;
