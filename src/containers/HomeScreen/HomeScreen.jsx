@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import MovieContainer from '../MovieContainer/MovieContainer';
 import * as actions from '../../actions';
-import * as cleaners from '../../util/cleaners';
-import { fetchMovies } from '../../util/api';
 import { getMovies } from '../../thunks/getMovies';
 import { connect } from 'react-redux';
 import './_HomeScreen.scss';
@@ -24,46 +22,6 @@ class HomeScreen extends Component {
     }
   }
 
-	// getMoviesOld = async path => {
-	// 	try {
-	// 		const res = await fetchMovies(path);
-	// 		const movies = cleaners.cleanMovies(res.results);
-	// 		this.updateMovieData(movies, path);
-	// 	} catch (err) {
-	// 		console.log(err);
-	// 	}
-	// };
-
-	// updateMovieDataOld = (movies, state) => {
-	// 	const {
-	// 		trendingMovies,
-	// 		topRatedMovies,
-	// 		nowPlayingMovies,
-	// 		upcomingMovies,
-	// 		addTrendingMovies,
-	// 		addTopRatedMovies,
-	// 		addNowPlayingMovies,
-	// 		addUpcomingMovies
-	// 	} = this.props;
-
-	// 	switch (state) {
-	// 		case 'popular':
-	// 			!trendingMovies.length && addTrendingMovies(movies);
-	// 			break;
-	// 		case 'top_rated':
-	// 			!topRatedMovies.length && addTopRatedMovies(movies);
-	// 			break;
-	// 		case 'now_playing':
-	// 			!nowPlayingMovies.length && addNowPlayingMovies(movies);
-	// 			break;
-	// 		case 'upcoming':
-	// 			!upcomingMovies.length && addUpcomingMovies(movies);
-	// 			break;
-	// 		default:
-	// 			break;
-  //   }
-	// };
-
   render() {
 		return (
 			<>
@@ -76,7 +34,7 @@ class HomeScreen extends Component {
 	}
 }
 
-const mapStateToProps = state => {
+export const mapStateToProps = state => {
 	return {
 		trendingMovies: state.trendingMovies,
 		topRatedMovies: state.topRatedMovies,
@@ -86,7 +44,7 @@ const mapStateToProps = state => {
 	};
 };
 
-const mapDispatchToProps = dispatch => {
+export const mapDispatchToProps = dispatch => {
   return {
     getMovies: (path, props) => dispatch(getMovies(path, props)),
     login: user => dispatch(actions.login(user))

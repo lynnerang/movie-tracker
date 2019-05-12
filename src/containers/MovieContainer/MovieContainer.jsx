@@ -13,6 +13,8 @@ export const MovieContainer = props => {
 			</Link>
 		);
   });
+
+  console.log(props.section)
   
 	return (
 		<section className="MovieContainer">

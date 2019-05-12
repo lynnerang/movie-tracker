@@ -9,7 +9,7 @@ describe('MovieContainer', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<MovieContainer movies={mockMovies}/>)
+    wrapper = shallow(<MovieContainer section='top_rated' movies={mockMovies}/>)
   })
 
   it('Should match the snapshot', () => {

@@ -45,3 +45,11 @@ export const mockMovies = [
     title: "Pokémon Detective Pikachu"
   }
 ]
+
+export const mockState = {
+  trendingMovies: mockMovies,
+  topRatedMovies: mockMovies,
+  nowPlayingMovies: mockMovies,
+  upcomingMovies: mockMovies,
+  user: mockUser
+};
