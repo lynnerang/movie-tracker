@@ -59,8 +59,8 @@ class HomeScreen extends Component {
 		return (
 			<>
 				<MovieContainer movies={this.props.trendingMovies} section="trending" />
-				<MovieContainer movies={this.props.topRatedMovies} section="top-rated" />
-				<MovieContainer movies={this.props.nowPlayingMovies} section="now-playing" />
+				<MovieContainer movies={this.props.topRatedMovies} section="top_rated" />
+				<MovieContainer movies={this.props.nowPlayingMovies} section="now_playing" />
 				<MovieContainer movies={this.props.upcomingMovies} section="upcoming" />
 			</>
 		);

@@ -19,3 +19,16 @@ export const fetchUser = async (body, dir) => {
   } 
   return await res.json();
 }
+
+export const addFavorite = async body => {
+  const res = await fetch('http://localhost:3000/api/users/favorites/new', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  });
+
+  if(!res.ok) {
+    throw new Error('Could not add favorite');
+  }
+  return await res.json();
+}
