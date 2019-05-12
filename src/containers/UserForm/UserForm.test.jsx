@@ -1,18 +1,27 @@
 import React from 'react';
-import UserForm from './UserForm';
+import { UserForm } from './UserForm';
 import Enzyme, { shallow } from 'enzyme';
 import { mockMovies } from '../../util/mockData/mockData';
-import Adapter from 'enzyme-adapter-react-16';
-Enzyme.configure({ adapter: new Adapter() })
 
 describe('UserForm', () => {
   let wrapper;
 
-  beforeEach(() => {
+  it('Should match the snapshot', () => {
     wrapper = shallow(<UserForm type="Log In" />)
-  })
+
+    expect(wrapper).toMatchSnapshot();
+  });
 
   it('Should match the snapshot', () => {
+    wrapper = shallow(<UserForm type="Sign Up" />)
+
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  //simulate change then simulate submit
+  it('Should match the snapshot', () => {
+    wrapper = shallow(<UserForm type="Sign Up" />)
+
     expect(wrapper).toMatchSnapshot();
   });
 

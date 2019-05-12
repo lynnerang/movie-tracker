@@ -30,7 +30,7 @@ class Header extends Component {
       )
     } else {
       return (
-        <p role="link" className="login-link" onClick={this.state.logUserOut}>Log out</p>
+        <p role="link" className="login-link" onClick={this.logUserOut}>Log out</p>
       )
     }
   }
