@@ -1,40 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import MovieContainer from '../MovieContainer/MovieContainer';
-import * as actions from '../../actions';
-import { getMovies } from '../../thunks/getMovies';
-import { connect } from 'react-redux';
 import './_HomeScreen.scss';
-import { getFavorites } from '../../util/api';
+import { connect } from 'react-redux';
 
-export class HomeScreen extends Component {
-
-	componentDidMount() {
-		this.props.getMovies('popular', this.props);
-		this.props.getMovies('top_rated', this.props);
-		this.props.getMovies('now_playing', this.props);
-    this.props.getMovies('upcoming', this.props);
-    this.checkLogin();
-  }
-  
-  checkLogin = async () => {
-    const user = JSON.parse(localStorage.getItem('user')) || {};
-    if (user.email) {
-			this.props.login(user);
-			const favorites = await getFavorites(user.id);
-			this.props.addFavorites(favorites.data);
-    }
-  }
-
-  render() {
-		return (
-			<>
-				<MovieContainer movies={this.props.trendingMovies} section="trending" />
-				<MovieContainer movies={this.props.topRatedMovies} section="top_rated" />
-				<MovieContainer movies={this.props.nowPlayingMovies} section="now_playing" />
-				<MovieContainer movies={this.props.upcomingMovies} section="upcoming" />
-			</>
-		);
-	}
+export const HomeScreen = props => {
+	return (
+		<>
+			<MovieContainer movies={props.trendingMovies} section="trending" />
+			<MovieContainer movies={props.topRatedMovies} section="top_rated" />
+			<MovieContainer movies={props.nowPlayingMovies} section="now_playing" />
+			<MovieContainer movies={props.upcomingMovies} section="upcoming" />
+		</>
+	);
 }
 
 export const mapStateToProps = state => {
@@ -43,16 +20,8 @@ export const mapStateToProps = state => {
 		topRatedMovies: state.topRatedMovies,
 		nowPlayingMovies: state.nowPlayingMovies,
     upcomingMovies: state.upcomingMovies,
-    user: state.user
 	};
 };
 
-export const mapDispatchToProps = dispatch => {
-  return {
-    getMovies: (path, props) => dispatch(getMovies(path, props)),
-		login: user => dispatch(actions.login(user)),
-		addFavorites: favorites => dispatch(actions.addFavorites(favorites))
-	};
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
+export default connect(mapStateToProps)(HomeScreen);
