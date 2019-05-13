@@ -4,6 +4,7 @@ import * as actions from '../../actions';
 import { getMovies } from '../../thunks/getMovies';
 import { connect } from 'react-redux';
 import './_HomeScreen.scss';
+import { getFavorites } from '../../util/api';
 
 export class HomeScreen extends Component {
 
@@ -15,10 +16,12 @@ export class HomeScreen extends Component {
     this.checkLogin();
   }
   
-  checkLogin = () => {
+  checkLogin = async () => {
     const user = JSON.parse(localStorage.getItem('user')) || {};
     if (user.email) {
-      this.props.login(user);
+			this.props.login(user);
+			const favorites = await getFavorites(user.id);
+			this.props.addFavorites(favorites.data);
     }
   }
 
@@ -47,7 +50,8 @@ export const mapStateToProps = state => {
 export const mapDispatchToProps = dispatch => {
   return {
     getMovies: (path, props) => dispatch(getMovies(path, props)),
-    login: user => dispatch(actions.login(user))
+		login: user => dispatch(actions.login(user)),
+		addFavorites: favorites => dispatch(actions.addFavorites(favorites))
 	};
 };
 

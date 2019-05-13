@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { cleanMovieDetails } from '../../util/cleaners';
-import { addFavorite, deleteFavorite } from '../../util/api';
-import { addMovieDetails } from '../../actions';
+import { addFavorite, deleteFavorite, getFavorites } from '../../util/api';
+import { addMovieDetails, addFavorites } from '../../actions';
 import Loader from '../Loader/Loader';
 import StarRatings from 'react-star-ratings';
 import './_MovieDetails.scss';
@@ -23,7 +23,6 @@ class MovieDetails extends Component {
 	}
 
 	getMovieDetails = () => {
-		console.log('fetch called');
 		const { REACT_APP_BASE_URL, REACT_APP_API_KEY } = process.env;
 		this.setState({ loading: true }, async () => {
 			try {
@@ -38,18 +37,20 @@ class MovieDetails extends Component {
 		});
 	};
 
-	handleClick = () => {
-		this.addFavorite();
+	handleClick = async () => {
+		const res = this.props.favorites.find(m => m.movie_id === parseInt(this.props.id));
+		res ? await this.deleteFavorite() : await this.addFavorite();
+		const favorites = await getFavorites(this.props.user.id);
+		await this.props.addFavorites(favorites.data);
 	};
 
 	deleteFavorite = async () => {
 		const body = {
 			user_id: this.props.user.id,
-			movie_id: this.state.details.movie.id
+			movie_id: this.state.details.id
 		};
 		try {
-			const res = await deleteFavorite(body);
-			console.log(res);
+			await deleteFavorite(body);
 		} catch (err) {
 			console.log(err);
 		}
@@ -68,8 +69,7 @@ class MovieDetails extends Component {
 		};
 
 		try {
-			const res = await addFavorite(body);
-			console.log(res);
+			await addFavorite(body);
 		} catch (err) {
 			console.log(err);
 		}
@@ -94,6 +94,10 @@ class MovieDetails extends Component {
 			production,
 			boxOffice
 		} = this.state.details;
+
+		const buttonText = this.props.favorites.find(m => m.movie_id === parseInt(this.props.id))
+			? 'Unfavorite'
+			: 'Favorite';
 
 		return (
 			<section className="MovieDetails">
@@ -126,7 +130,12 @@ class MovieDetails extends Component {
 									<img src={poster} alt={`${title} poster`} />
 									<div className="MovieDetails-metadata">
 										<div className="StarRatings-container">
-											<StarRatings rating={rating} numberOfStars={10} starRatedColor="#FFE000" starDimension="30px" />
+											<StarRatings
+												rating={rating / 2 || 0}
+												numberOfStars={5}
+												starRatedColor="#FFE000"
+												starDimension="30px"
+											/>
 										</div>
 										<p className="metadata-header">Runtime:</p>
 										<p className="metadata-info">{runtime} minutes</p>
@@ -138,7 +147,7 @@ class MovieDetails extends Component {
 										<p className="metadata-info">{popularity}</p>
 										<p className="metadata-header">Box Office Gross: </p>
 										<p className="metadata-info">${boxOffice}</p>
-										{this.props.user.email && <button onClick={this.handleClick}>Favorite</button>}
+										{this.props.user.email && <button onClick={this.handleClick}>{buttonText}</button>}
 									</div>
 								</main>
 								<section className="MovieDetails-similar">
@@ -156,13 +165,15 @@ class MovieDetails extends Component {
 export const mapStateToProps = state => {
 	return {
 		user: state.user,
-		movieDetails: state.movieDetails
+		movieDetails: state.movieDetails,
+		favorites: state.favorites
 	};
 };
 
 export const mapDispatchToProps = dispatch => {
 	return {
-		addMovieDetails: movie => dispatch(addMovieDetails(movie))
+		addMovieDetails: movie => dispatch(addMovieDetails(movie)),
+		addFavorites: favorites => dispatch(addFavorites(favorites))
 	};
 };
 

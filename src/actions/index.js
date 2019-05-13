@@ -45,3 +45,10 @@ export const addMovieDetails = movie => {
 		payload: { movie }
 	};
 };
+
+export const addFavorites = favorites => {
+	return {
+		type: 'ADD_FAVORITES',
+		payload: { favorites }
+	};
+};

@@ -31,14 +31,22 @@ export const addFavorite = async body => {
 };
 
 export const deleteFavorite = async body => {
-	const { userId, movieId } = body;
-	const res = await fetch(`http://localhost:3000/api/users/${userId}/favorites/${movieId}`, {
+	const { user_id, movie_id } = body;
+	console.log(user_id, movie_id);
+	const res = await fetch(`http://localhost:3000/api/users/${user_id}/favorites/${movie_id}`, {
 		method: 'DELETE',
-		headers: { 'Content-Type': 'application/json' },
-		body: JSON.parse(body)
+		headers: { 'Content-Type': 'application/json' }
 	});
 	if (!res.ok) {
 		throw new Error('Could not delete favorite');
 	}
 	return res.json();
+};
+
+export const getFavorites = async userId => {
+	const res = await fetch(`http://localhost:3000/api/users/${userId}/favorites`);
+	if (!res.ok) {
+		throw new Error('Could not add favorite');
+	}
+	return await res.json();
 };
