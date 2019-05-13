@@ -14,5 +14,25 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border: 1px solid rgb(49, 51, 52);
+	/* background-color: rgb(29, 29, 29); */
+}
+
+::-webkit-scrollbar {
+  border-radius: 5px;
+  height: 8px;
+  width: 8px;
+	/* background-color: rgb(38, 38, 38); */
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+	background-color: #484F51;
+	border: 1px solid #484F51;
+}
+
 
 
