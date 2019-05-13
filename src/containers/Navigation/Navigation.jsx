@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 class Navigation extends Component {
   state = {
     genres: [],
+    showGenres: false,
     filters: []
   }
 
@@ -38,14 +39,14 @@ class Navigation extends Component {
   }
   
   getFilterNav = () => {
-    // const genreOptions = this.state.genres.map(i => <div className="filter-option"><input type="checkbox" id={i.name} /><label htmlFor={i.name}>{i.name}</label></div>);
+    const genreOptions = this.state.showGenres ? this.state.genres.map(i => <div className="filter-option"><input type="checkbox" id={i.name} /><label htmlFor={i.name}>{i.name}</label></div>) : null;
 
     return <nav className="nav-section filter">
       <h4 className="nav-header">FILTERS</h4>
-      <p role="link" className="nav-link" name="Trending">
+      <p role="link" className="nav-link" name="Trending" onClick={() => this.setState({showGenres: !this.state.showGenres})}>
         <i className="fas fa-plus"></i>Genre
       </p>
-      {/* {genreOptions} */}
+      {genreOptions}
       <p role="link" className="nav-link" name="Top rated">
         <i className="fas fa-plus"></i>Avg rating
       </p>

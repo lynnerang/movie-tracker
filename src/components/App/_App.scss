@@ -12,9 +12,10 @@
 }
 
 .below-header {
-	margin-top: $header-height;
-	display: flex;
-	min-height: calc(100vh - #{$header-height});
+  margin-top: $header-height;
+  display: flex;
+  width: 100vw;
+  min-height: calc(100vh - #{$header-height});
 }
 
 .main-content {

@@ -7,16 +7,29 @@ import { login, logout } from '../../actions'
 class Header extends Component {
 	state = {
 		showLogin: false,
-		showSignup: false
-	};
+    showSignup: false,
+    showLogout: false
+  };
 
 	closeUserForm = () => {
 		this.setState({ showLogin: false, showSignup: false });
   };
 
   logUserOut = () => {
+    this.setState({ showLogout: true });
     localStorage.setItem('user', JSON.stringify({ email: '', password: '' }))
     this.props.logout();
+    setTimeout(() => this.setState({ showLogout: false }), 2000);
+  }
+
+  getLogoutConf = () => {
+    return <div className="popup">
+      <div className="dialog">
+        <i className="fas fa-times popup-close-btn" onClick={() => this.setState({showLogout: false})} />
+        <h3 className="dialog-header">Log Out</h3>
+        <p className="confirmation">You are now logged out of your account.</p>
+      </div>
+    </div>
   }
   
   getLink = () => {
@@ -48,9 +61,11 @@ class Header extends Component {
   render() {
     const form = this.getFormType();
     const loginLink = this.getLink();
+    const logoutConf = this.state.showLogout ? this.getLogoutConf() : null;
     
 		return (
-			<header className="top-bar">
+      <header className="top-bar">
+        {logoutConf}
 				{form}
 				<Link exact="true" to="/" className="logo-area">
 					<img className="logo-img" src={require('../../../src/images/logo.png')} alt="Movie-tracker-logo" />
