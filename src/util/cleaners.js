@@ -10,6 +10,7 @@ export const cleanMovies = movies => {
 
 export const cleanMovieDetails = movie => {
 	return {
+		favorite: false,
 		poster: movie.poster_path ? `${process.env.REACT_APP_BASE_IMAGE_URL}/w342${movie.poster_path}` : null,
 		backdrop: movie.backdrop_path ? `${process.env.REACT_APP_BASE_IMAGE_URL}/w1280${movie.backdrop_path}` : null,
 		genres: movie.genres.map(g => g.name).sort(),

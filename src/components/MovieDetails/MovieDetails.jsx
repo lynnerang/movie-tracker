@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { cleanMovieDetails } from '../../util/cleaners';
 import { addFavorite, deleteFavorite } from '../../util/api';
+import { addMovieDetails } from '../../actions';
 import Loader from '../Loader/Loader';
 import StarRatings from 'react-star-ratings';
 import './_MovieDetails.scss';
@@ -13,18 +14,29 @@ class MovieDetails extends Component {
 	};
 
 	componentDidMount() {
+		const details = this.props.movieDetails.find(m => m.id === parseInt(this.props.id));
+		if (!details) {
+			this.getMovieDetails();
+		} else {
+			this.setState({ details });
+		}
+	}
+
+	getMovieDetails = () => {
+		console.log('fetch called');
 		const { REACT_APP_BASE_URL, REACT_APP_API_KEY } = process.env;
 		this.setState({ loading: true }, async () => {
 			try {
 				const res = await fetch(`${REACT_APP_BASE_URL}/movie/${this.props.id}?api_key=${REACT_APP_API_KEY}`);
 				const movie = await res.json();
 				const details = cleanMovieDetails(movie);
+				this.props.addMovieDetails(details);
 				this.setState({ details, loading: false });
 			} catch (err) {
 				console.log(err);
 			}
 		});
-	}
+	};
 
 	handleClick = () => {
 		this.addFavorite();
@@ -64,7 +76,7 @@ class MovieDetails extends Component {
 	};
 
 	componentDidUpdate() {
-		window.scrollTo(0,0);
+		window.scrollTo(0, 0);
 	}
 
 	render() {
@@ -113,9 +125,9 @@ class MovieDetails extends Component {
 								<main className="MovieDetails-main">
 									<img src={poster} alt={`${title} poster`} />
 									<div className="MovieDetails-metadata">
-										<p>
-											<StarRatings rating={rating} numberOfStars={10} starRatedColor="#FFE000" starDimension="30px"/>
-										</p>
+										<div className="StarRatings-container">
+											<StarRatings rating={rating} numberOfStars={10} starRatedColor="#FFE000" starDimension="30px" />
+										</div>
 										<p className="metadata-header">Runtime:</p>
 										<p className="metadata-info">{runtime} minutes</p>
 										<p className="metadata-header">Description:</p>
@@ -143,12 +155,15 @@ class MovieDetails extends Component {
 
 export const mapStateToProps = state => {
 	return {
-		user: state.user
+		user: state.user,
+		movieDetails: state.movieDetails
 	};
 };
 
 export const mapDispatchToProps = dispatch => {
-	return {};
+	return {
+		addMovieDetails: movie => dispatch(addMovieDetails(movie))
+	};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieDetails);

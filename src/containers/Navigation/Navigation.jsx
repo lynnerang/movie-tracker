@@ -38,7 +38,7 @@ class Navigation extends Component {
   }
   
   getFilterNav = () => {
-    const genreOptions = this.state.genres.map(i => <div className="filter-option"><input type="checkbox" id={i.name} /><label htmlFor={i.name}>{i.name}</label></div>);
+    // const genreOptions = this.state.genres.map(i => <div className="filter-option"><input type="checkbox" id={i.name} /><label htmlFor={i.name}>{i.name}</label></div>);
 
     return <nav className="nav-section filter">
       <h4 className="nav-header">FILTERS</h4>
