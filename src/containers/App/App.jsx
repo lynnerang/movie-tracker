@@ -2,18 +2,17 @@ import React, { Component } from 'react';
 import Header from '../../containers/Header/Header';
 import Navigation from '../../containers/Navigation/Navigation';
 import ResultsScreen from '../../containers/ResultsScreen/ResultsScreen';
-import MovieDetails from '../MovieDetails/MovieDetails';
+import MovieDetails from '../../components/MovieDetails/MovieDetails';
 import HomeScreen from '../../containers/HomeScreen/HomeScreen';
 import * as actions from '../../actions';
 import { getMovies } from '../../thunks/getMovies';
 import { getFavorites } from '../../util/api';
 import { Switch, Route } from 'react-router-dom';
-import Error from '../Error/Error';
+import Error from '../../components/Error/Error';
 import './_App.scss';
 import { connect } from 'react-redux';
 
 class App extends Component {
-	
 	componentDidMount() {
 		this.props.getMovies('popular', this.props);
 		this.props.getMovies('top_rated', this.props);
@@ -50,10 +49,7 @@ class App extends Component {
 								path="/movies/:id"
 								component={({ match }) => <MovieDetails id={match.params.id} key={match.params.id} />}
 							/>
-							<Route
-								exact
-								path="/favorites"
-								component={() => <ResultsScreen section="favorites" />} />
+							<Route exact path="/favorites" component={() => <ResultsScreen section="favorites" />} />
 							<Route render={Error} />
 						</Switch>
 					</main>

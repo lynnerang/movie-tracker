@@ -3,7 +3,7 @@
 @import '../../containers/Navigation/_Navigation.scss';
 @import '../../containers/MovieContainer/_MovieContainer.scss';
 @import '../../containers/UserForm/_UserForm.scss';
-@import '../Poster/Poster';
+@import '../../components/Poster/Poster';
 
 .App {
 	min-width: 100vw;
@@ -12,10 +12,10 @@
 }
 
 .below-header {
-  margin-top: $header-height;
-  display: flex;
-  width: 100vw;
-  min-height: calc(100vh - #{$header-height});
+	margin-top: $header-height;
+	display: flex;
+	width: 100vw;
+	min-height: calc(100vh - #{$header-height});
 }
 
 .main-content {
