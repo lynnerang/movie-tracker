@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { cleanMovieDetails } from '../../util/cleaners';
 import { addFavorite, deleteFavorite } from '../../util/api';
 import Loader from '../Loader/Loader';
+import StarRatings from 'react-star-ratings';
 import './_MovieDetails.scss';
 
 class MovieDetails extends Component {
@@ -108,8 +109,9 @@ class MovieDetails extends Component {
 								<main className="MovieDetails-main">
 									<img src={poster} alt={`${title} poster`} />
 									<div className="MovieDetails-metadata">
-										<p className="metadata-header">Rating:</p>
-										<p className="metadata-info">{rating}</p>
+										<p>
+											<StarRatings rating={rating} numberOfStars={10} starRatedColor="#FFE000" starDimension="30px"/>
+										</p>
 										<p className="metadata-header">Runtime:</p>
 										<p className="metadata-info">{runtime} minutes</p>
 										<p className="metadata-header">Description:</p>
