@@ -14,7 +14,7 @@ class MovieDetails extends Component {
 	};
 
 	componentDidMount() {
-		const details = this.props.movieDetails.find(m => m.id === parseInt(this.props.id));
+		const details = this.props.movieDetails.find(m => m.movie_id === parseInt(this.props.id));
 		if (!details) {
 			this.getMovieDetails();
 		} else {
@@ -47,7 +47,7 @@ class MovieDetails extends Component {
 	deleteFavorite = async () => {
 		const body = {
 			user_id: this.props.user.id,
-			movie_id: this.state.details.id
+			movie_id: this.state.details.movie_id
 		};
 		try {
 			await deleteFavorite(body);
@@ -57,11 +57,11 @@ class MovieDetails extends Component {
 	};
 
 	addFavorite = async () => {
-		const { title, releaseDate, poster, id, rating, description } = this.state.details;
+		const { title, releaseDate, poster_path, movie_id, rating, description } = this.state.details;
 		const body = {
-			movie_id: id,
+			movie_id: movie_id,
 			user_id: this.props.user.id,
-			poster_path: poster,
+			poster_path: poster_path,
 			release_date: releaseDate,
 			vote_average: rating,
 			title,
@@ -84,7 +84,7 @@ class MovieDetails extends Component {
 			title,
 			releaseDate,
 			runtime,
-			poster,
+			poster_path,
 			backdrop,
 			genres,
 			rating,
@@ -127,7 +127,7 @@ class MovieDetails extends Component {
 							</header>
 							<div className="MovieDetails-grid">
 								<main className="MovieDetails-main">
-									<img src={poster} alt={`${title} poster`} />
+									<img src={poster_path} alt={`${title} poster`} />
 									<div className="MovieDetails-metadata">
 										<div className="StarRatings-container">
 											<StarRatings

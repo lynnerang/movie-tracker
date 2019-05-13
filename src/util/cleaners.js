@@ -1,8 +1,8 @@
 export const cleanMovies = movies => {
 	return movies.map(movie => {
 		return {
-			poster: movie.poster_path ? `${process.env.REACT_APP_BASE_IMAGE_URL}/w300${movie.poster_path}` : null,
-			id: movie.id,
+			poster_path: movie.poster_path ? `${process.env.REACT_APP_BASE_IMAGE_URL}/w300${movie.poster_path}` : null,
+			movie_id: movie.id,
 			title: movie.title
 		};
 	});
@@ -10,10 +10,10 @@ export const cleanMovies = movies => {
 
 export const cleanMovieDetails = movie => {
 	return {
-		poster: movie.poster_path ? `${process.env.REACT_APP_BASE_IMAGE_URL}/w342${movie.poster_path}` : null,
+		poster_path: movie.poster_path ? `${process.env.REACT_APP_BASE_IMAGE_URL}/w342${movie.poster_path}` : null,
 		backdrop: movie.backdrop_path ? `${process.env.REACT_APP_BASE_IMAGE_URL}/w1280${movie.backdrop_path}` : null,
 		genres: movie.genres.map(g => g.name).sort(),
-		id: movie.id,
+		movie_id: movie.id,
 		rating: movie.vote_average,
 		title: movie.original_title,
 		language: movie.original_language.toUpperCase(),
