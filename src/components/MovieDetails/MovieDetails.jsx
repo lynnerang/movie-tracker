@@ -63,6 +63,10 @@ class MovieDetails extends Component {
 		}
 	};
 
+	componentDidUpdate() {
+		window.scrollTo(0,0);
+	}
+
 	render() {
 		const {
 			title,
