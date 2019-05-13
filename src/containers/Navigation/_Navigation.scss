@@ -2,11 +2,19 @@
 
 .Navigation {
   background: #2A2E30;
-  width: $nav-width;
+  width: $nav-width!important;
   text-align: left;
   padding: 0px 10px;
   position: fixed;
   height: calc(100vh - 40px);
+  width: 100%;
+  overflow: scroll;
+
+  &::-webkit-scrollbar {
+    border-radius: 5px;
+    height: 2px;
+    width: 2px;
+  }
 }
 
 .nav-section {

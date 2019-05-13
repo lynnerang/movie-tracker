@@ -9,7 +9,7 @@ class Header extends Component {
 		showLogin: false,
     showSignup: false,
     showLogout: false
-	};
+  };
 
 	closeUserForm = () => {
 		this.setState({ showLogin: false, showSignup: false });
