@@ -13,7 +13,7 @@ const App = () => {
 		<section className="App">
 			<Header />
 			<div className="below-header">
-				<Navigation />
+			<Navigation />
 				<main className="main-content">
 					<Switch>
 						<Route exact path="/" component={HomeScreen} />

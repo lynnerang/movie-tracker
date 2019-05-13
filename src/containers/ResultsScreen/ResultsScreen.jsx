@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 import MovieContainer from '../MovieContainer/MovieContainer';
 import { connect } from 'react-redux';
 
-export const ResultsScreen = props => {
-	return <MovieContainer movies={props[props.section]} section={props.section} type="grid" />;
-};
+export class ResultsScreen extends Component {
+	componentDidUpdate() {
+		window.scrollTo(0, 0);
+	}
+
+	render() {
+		return <MovieContainer movies={this.props[this.props.section]} section={this.props.section} type="grid" />;
+	}
+}
 
 export const mapStateToProps = state => {
 	return {
