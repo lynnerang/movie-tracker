@@ -13,7 +13,7 @@ const App = () => {
 		<section className="App">
 			<Header />
 			<div className="below-header">
-			<Navigation />
+				<Navigation />
 				<main className="main-content">
 					<Switch>
 						<Route exact path="/" component={HomeScreen} />
@@ -23,7 +23,8 @@ const App = () => {
 							path="/movies/:id"
 							component={({ match }) => <MovieDetails id={match.params.id} key={match.params.id} />}
 						/>
-						<Route render={Error} />} />
+						<Route exact path="/favorites" component={() => <ResultsScreen section="favorites" />} />
+						<Route render={Error} />
 					</Switch>
 				</main>
 			</div>

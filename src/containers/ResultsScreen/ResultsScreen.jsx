@@ -17,7 +17,8 @@ export const mapStateToProps = state => {
 		trending: state.trendingMovies,
 		top_rated: state.topRatedMovies,
 		now_playing: state.nowPlayingMovies,
-		upcoming: state.upcomingMovies
+		upcoming: state.upcomingMovies,
+		favorites: state.favorites
 	};
 };
 
