@@ -11,15 +11,15 @@
 .MovieDetails-content {
 	padding: 30px;
 	height: 100vh;
-	width: 100%;
+	width: calc(100vw - #{$nav-width});
 	text-align: left;
 	overflow-y: scroll;
 }
 
 .MovieDetails-backdrop {
 	height: 100%;
-	width: 100%;
-	position: absolute;
+	width: calc(100vw - #{$nav-width});
+	position: fixed;
 	background-color: black;
 	z-index: -1;
 	& img {

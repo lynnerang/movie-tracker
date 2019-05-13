@@ -6,20 +6,20 @@
 @import '../Poster/Poster';
 
 .App {
-  min-width: 100vw;
-  max-width: 100vw;
-  text-align: center;
+	min-width: 100vw;
+	max-width: 100vw;
+	text-align: center;
 }
 
 .below-header {
-  margin-top: $header-height;
-  display: flex;
-  min-height: calc(100vh - #{$header-height});
+	margin-top: $header-height;
+	display: flex;
+	min-height: calc(100vh - #{$header-height});
 }
 
 .main-content {
-  width: calc(100vw - #{$nav-width});
-  margin-left: $nav-width;
-  background: $bg-gradient, url('../../images/main-bg.png');
-  object-fit: cover;
+	width: calc(100vw - #{$nav-width});
+	margin-left: $nav-width;
+	background: $bg-gradient, url('../../images/main-bg.png');
+	object-fit: cover;
 }
