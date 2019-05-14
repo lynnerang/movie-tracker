@@ -8,41 +8,8 @@ export class UserForm extends Component {
 		name: '',
 		email: '',
 		password: '',
-		showErr: false,
-		showConfirm: false
-	};
-
-	getForm = () => {
-		const name = this.props.type === 'Sign Up' ? this.getName() : null;
-
-		return (
-			<form className="user-form" onSubmit={this.handleSubmit}>
-				<h4 className="form-header">Enter your details:</h4>
-				<label htmlFor="user-email" />
-				{name}
-				<input
-					className="detail-input"
-					type="email"
-					name="email"
-					placeholder="email"
-					value={this.state.email}
-					id="user-email"
-					onChange={this.handleChange}
-				/>
-				<label htmlFor="user-password" />
-				<input
-					className="detail-input"
-					type="password"
-					name="password"
-					placeholder="password"
-					value={this.state.password}
-					id="user-password"
-					onChange={this.handleChange}
-				/>
-				<input className="login-form-btn" type="submit" value={this.props.type} />
-			</form>
-		);
-	};
+		showErr: false
+  };
 
 	getName = () => {
 		return (
@@ -58,13 +25,11 @@ export class UserForm extends Component {
 				/>
 			</div>
 		);
-	};
+  };
 
-	getErrorMsg = () => {
-		const msg =
-			this.props.type === 'Log In'
-				? 'Incorrect email or password. Please try again.'
-				: 'Email already exists as an account.Please log in.';
+  getErrorMsg = () => {
+		const msg = this.props.type === 'Log In' ? 'Incorrect email or password. Please try again.'
+			: 'Email already exists as an account.Please log in.';
 
 		return <p className="error">{msg}</p>;
 	};
@@ -83,7 +48,8 @@ export class UserForm extends Component {
 			: this.getUser({ name, email, password }, 'new');
 	};
 
-	getUser = async (body, dir) => {
+  getUser = async (body, dir) => {
+    alert('poop')
 		try {
 			const result = await fetchUser(body, dir);
 			this.logUserIn(result, body);
@@ -94,39 +60,57 @@ export class UserForm extends Component {
 		}
 	};
 
-	logUserIn = async (result, body) => {
+  logUserIn = async (result, body) => {
+    let userData;
 		if (this.props.type === 'Log In') {
-			this.props.login(result.data);
-			localStorage.setItem('user', JSON.stringify(result.data));
+			userData = result.data;
 		} else {
-			this.props.login({ id: result.id, email: body.email, name: body.name });
-			localStorage.setItem('user', JSON.stringify({ id: result.id, email: body.email, name: body.name }));
-		}
+      userData = { id: result.id, email: body.email, name: body.name };
+    }
+    this.props.login(userData);
+    localStorage.setItem('user', JSON.stringify(userData));
 
 		const favorites = await getFavorites(this.props.user.id);
 		this.props.addFavorites(favorites.data);
-		this.setState({ name: '', email: '', password: '', showConfirm: true });
-		setTimeout(() => this.props.closeUserForm(), 2000);
+    this.setState({ name: '', email: '', password: '' });
+
+    this.props.showConf('loginConf');
 	};
 
-	render() {
+  render() {
 		const errMsg = this.state.showErr ? this.getErrorMsg() : null;
-		const dialogContent = !this.state.showConfirm ? (
-			this.getForm()
-		) : (
-			<p className="confirmation">Success! You are now logged in, enjoy your movie browsing!</p>
-		);
+    // const disabled = !this.state.name || !this.state.email || !this.state.password;
+    const name = this.props.type === 'Sign Up' ? this.getName() : null;
 
-		return (
-			<div className="popup">
-				<div className="dialog">
-					<i className="fas fa-times popup-close-btn" onClick={this.props.closeUserForm} />
-					<h3 className="dialog-header">{this.props.type}</h3>
-					{dialogContent}
-					{errMsg}
-				</div>
-			</div>
-		);
+    return (
+      <form className="user-form" onSubmit={this.handleSubmit}>
+        <h3 className="dialog-header">{this.props.type}</h3>
+        <h4 className="form-header">Enter your details:</h4>
+        <label htmlFor="user-email" />
+        {name}
+        <input
+          className="detail-input"
+          type="email"
+          name="email"
+          placeholder="email"
+          value={this.state.email}
+          id="user-email"
+          onChange={this.handleChange}
+        />
+        <label htmlFor="user-password" />
+        <input
+          className="detail-input"
+          type="password"
+          name="password"
+          placeholder="password"
+          value={this.state.password}
+          id="user-password"
+          onChange={this.handleChange}
+        />
+        <input className="login-form-btn" type="submit" value={this.props.type} />
+        {errMsg}
+      </form>
+    );
 	}
 }
 

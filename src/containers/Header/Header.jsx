@@ -5,42 +5,32 @@ import { connect } from 'react-redux';
 import { login, logout } from '../../actions'
 
 class Header extends Component {
-	state = {
-		showLogin: false,
-    showSignup: false,
-    showLogout: false
+  state = {
+    dialog: null
   };
 
 	closeUserForm = () => {
-		this.setState({ showLogin: false, showSignup: false });
+    this.setState({ dialog: null });
   };
 
-  logUserOut = () => {
-    this.setState({ showLogout: true });
-    localStorage.setItem('user', JSON.stringify({ email: '', password: '' }))
-    this.props.logout();
-    setTimeout(() => this.setState({ showLogout: false }), 2000);
+  showConf = type => {
+    this.setState({ dialog: type });
+    setTimeout(() => this.setState({ dialog: null }), 2000);
   }
 
-  getLogoutConf = () => {
-    return <div className="popup">
-      <div className="dialog">
-        <i className="fas fa-times popup-close-btn" onClick={() => this.setState({showLogout: false})} />
-        <h3 className="dialog-header">Log Out</h3>
-        <p className="confirmation">You are now logged out of your account.</p>
-      </div>
-    </div>
+  logUserOut = () => {
+    localStorage.setItem('user', JSON.stringify({ email: '', password: '' }))
+    this.showConf('logoutConf');
+    this.props.logout();
   }
   
   getLink = () => {
     if (!this.props.user.email) {
-      return (
-        <>
-          <p role="link" className="login-link" onClick={() => this.setState({ showSignup: false, showLogin: true })}>Login</p>
+      return <>
+          <p role="link" className="login-link" onClick={() => this.setState({ dialog: 'loginForm' })}>Login</p>
           /
-          <p role="link" className="login-link" onClick={() => this.setState({ showLogin: false, showSignup: true })}>Sign Up</p>
+          <p role="link" className="login-link" onClick={() => this.setState({ dialog: 'signupForm' })}>Sign Up</p>
         </>
-      )
     } else {
       return (
         <p role="link" className="login-link" onClick={this.logUserOut}>Log out</p>
@@ -48,25 +38,37 @@ class Header extends Component {
     }
   }
 
-  getFormType = () => {
-    if (this.state.showLogin) {
-      return <UserForm type="Log In" closeUserForm={this.closeUserForm} />;
-    } else if (this.state.showSignup) {
-      return <UserForm type="Sign Up" closeUserForm={this.closeUserForm} />;
-    } else {
-      return null;
-    }
+  getContent = () => {
+    let content;
+    const dialog = this.state.dialog;
+
+    if (dialog === 'loginForm') {
+      content = <UserForm type="Log In" showConf={this.showConf} closeUserForm={this.closeUserForm} />;
+    } else if (dialog === 'signupForm') {
+      content = <UserForm type="Sign Up" showConf={this.showConf} closeUserForm={this.closeUserForm} />;
+    } else if (dialog === 'loginConf') {
+      content = <p className="confirmation">Success! You are now logged in, enjoy your movie browsing!</p>
+    } else if (dialog === 'logoutConf') {
+      content = <p className="confirmation">You are now logged out of your account.</p>;
+    } 
+    return content;
   }
 
+
   render() {
-    const form = this.getFormType();
     const loginLink = this.getLink();
-    const logoutConf = this.state.showLogout ? this.getLogoutConf() : null;
+    let content = this.getContent();
+    const dialog = this.state.dialog &&
+      <div className="popup">
+        <div className="dialog">
+          <i className="fas fa-times popup-close-btn" onClick={this.closeUserForm} />
+          {content}
+        </div>
+      </div>;
     
 		return (
       <header className="top-bar">
-        {logoutConf}
-				{form}
+        {dialog}
 				<Link exact="true" to="/" className="logo-area">
 					<img className="logo-img" src={require('../../../src/images/logo.png')} alt="Movie-tracker-logo" />
 					<h1 className="logo-text">MovieTracker</h1>
