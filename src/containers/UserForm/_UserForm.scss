@@ -90,3 +90,11 @@
   bottom: 5px;
 }
 
+.login-form-btn:disabled {
+  background: rgb(176, 176, 176);
+
+  &:hover {
+    background: rgb(176, 176, 176);
+  }
+}
+

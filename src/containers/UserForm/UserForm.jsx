@@ -49,7 +49,6 @@ export class UserForm extends Component {
 	};
 
   getUser = async (body, dir) => {
-    alert('poop')
 		try {
 			const result = await fetchUser(body, dir);
 			this.logUserIn(result, body);
@@ -78,8 +77,9 @@ export class UserForm extends Component {
 	};
 
   render() {
-		const errMsg = this.state.showErr ? this.getErrorMsg() : null;
-    // const disabled = !this.state.name || !this.state.email || !this.state.password;
+    const errMsg = this.state.showErr ? this.getErrorMsg() : null;
+    console.log(this.state)
+    const disable = !this.state.name || !this.state.email || !this.state.password;
     const name = this.props.type === 'Sign Up' ? this.getName() : null;
 
     return (
@@ -107,7 +107,7 @@ export class UserForm extends Component {
           id="user-password"
           onChange={this.handleChange}
         />
-        <input className="login-form-btn" type="submit" value={this.props.type} />
+        <input className="login-form-btn" type="submit" value={this.props.type} disabled={disable} />
         {errMsg}
       </form>
     );
