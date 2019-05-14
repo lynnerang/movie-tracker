@@ -1,6 +1,7 @@
 import { getMovies } from './getMovies';
 import { updateMovieData } from './updateMovieData';
-import { mockMovies, mockPath, mockProps } from '../util/mockData/mockData'
+import { mockMovies, mockPath, mockProps } from '../util/mockData/mockData';
+import { fetchMovies } from '../util/api';
 
 jest.mock('./updateMovieData')
 

@@ -1,4 +1,4 @@
-export const upcomingMoviesReducer = (state = [], action) => {
+const upcomingMoviesReducer = (state = [], action) => {
   switch (action.type) {
     case 'ADD_UPCOMING':
       return action.payload.movies
@@ -6,3 +6,5 @@ export const upcomingMoviesReducer = (state = [], action) => {
       return state;
   }
 }
+
+export default upcomingMoviesReducer;
