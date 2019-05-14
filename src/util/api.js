@@ -32,7 +32,6 @@ export const addFavorite = async body => {
 
 export const deleteFavorite = async body => {
 	const { user_id, movie_id } = body;
-	console.log(user_id, movie_id);
 	const res = await fetch(`http://localhost:3000/api/users/${user_id}/favorites/${movie_id}`, {
 		method: 'DELETE',
 		headers: { 'Content-Type': 'application/json' }
@@ -46,7 +45,7 @@ export const deleteFavorite = async body => {
 export const getFavorites = async userId => {
 	const res = await fetch(`http://localhost:3000/api/users/${userId}/favorites`);
 	if (!res.ok) {
-		throw new Error('Could not add favorite');
+		throw new Error('Could not get favorites.');
 	}
 	return await res.json();
 };
