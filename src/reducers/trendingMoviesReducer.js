@@ -6,4 +6,3 @@ export const trendingMoviesReducer = (state = [], action) => {
       return state;
   }
 }
-

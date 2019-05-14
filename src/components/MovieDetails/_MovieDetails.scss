@@ -68,6 +68,7 @@ h1 {
 }
 
 .MovieDetails-metadata {
+  position: relative;
 	padding: 0 50px;
 	line-height: 1.4;
 	& .metadata-header {
@@ -94,4 +95,20 @@ h1 {
 
 .StarRatings-container {
 	margin-bottom: 16px;
+}
+
+.fa-heart {
+  font-size: 35px!important;
+  position: absolute;
+  top: 0px;
+  right: 55px;
+
+  &:hover {
+    cursor: pointer;
+    color: red;
+  }
+}
+
+.favorited {
+  color: red;
 }

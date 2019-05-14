@@ -85,3 +85,12 @@
     margin-right: 8px;
   }
 }
+
+.disabled {
+  cursor: not-allowed!important;
+  opacity: .5;
+  
+  &:hover {
+    color: $faint-white;
+  }
+}

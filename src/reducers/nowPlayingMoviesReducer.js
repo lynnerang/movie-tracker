@@ -6,3 +6,4 @@ export const nowPlayingMoviesReducer = (state = [], action) => {
       return state;
   }
 }
+

@@ -10,13 +10,17 @@
   height: 100%;
 
 	&.trending {
-		width: 250px;
+    width: 250px;
 
 		.Poster-poster,
 		.Poster-title {
-			width: 250px;
+      width: 250px;
 			font-size: 17px;
-		}
+    }
+
+    .Poster-poster {
+      height: 375px;
+    }
 	}
 
 	&:hover {
@@ -32,7 +36,8 @@
 }
 
 .Poster-poster {
-	width: 185px;
+  width: 185px;
+  height: 275px;
   border: 1px solid $faint-white;
 }
 
