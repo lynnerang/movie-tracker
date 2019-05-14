@@ -26,15 +26,15 @@ class Navigation extends Component {
         <NavLink className="nav-link" exact to="/favorites">
           <i className="fas fa-star"></i>Favorites
 			</NavLink>
-        <NavLink className="nav-link" exact to="/watchlist">
+        <p className="nav-link disabled" exact to="">
           <i className="fas fa-eye"></i>Watchlist
-			</NavLink>
-        <NavLink className="nav-link" exact to="/avoidlist">
+			</p>
+        <p className="nav-link disabled" exact to="">
           <i className="fas fa-hand-paper"></i>Avoidlist
-			</NavLink>
-        <NavLink className="nav-link" exact to="/reviewed">
+			</p>
+        <p className="nav-link disabled" exact to="">
           <i className="fas fa-clipboard-check"></i>Reviewed
-			</NavLink>
+			</p>
       </nav>;
   }
   
