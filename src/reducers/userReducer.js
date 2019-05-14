@@ -1,6 +1,6 @@
 const initialState = { email: '', id: 0, name: '', password: '' };
 
-const userReducer = (state = initialState, action) => {
+export const userReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case 'LOGIN':
 			return action.payload.userData;
@@ -10,5 +10,3 @@ const userReducer = (state = initialState, action) => {
 			return state;
 	}
 };
-
-export default userReducer;

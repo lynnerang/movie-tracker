@@ -1,4 +1,4 @@
-const trendingMoviesReducer = (state = [], action) => {
+export const trendingMoviesReducer = (state = [], action) => {
   switch (action.type) {
     case 'ADD_TRENDING':
       return action.payload.movies
@@ -6,5 +6,3 @@ const trendingMoviesReducer = (state = [], action) => {
       return state;
   }
 }
-
-export default trendingMoviesReducer;
