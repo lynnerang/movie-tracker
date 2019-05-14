@@ -54,3 +54,7 @@ describe('fetchUser', () => {
     await expect(Api.fetchUser()).rejects.toEqual(Error('Failed to post user data.'))
   })
 })
+
+describe('fetchMovies', () => {
+  it('should')
+})

@@ -59,9 +59,9 @@ class MovieDetails extends Component {
 	addFavorite = async () => {
 		const { title, releaseDate, poster_path, movie_id, rating, description } = this.state.details;
 		const body = {
-			movie_id: movie_id,
+			movie_id,
 			user_id: this.props.user.id,
-			poster_path: poster_path,
+			poster_path,
 			release_date: releaseDate,
 			vote_average: rating,
 			title,
@@ -94,10 +94,10 @@ class MovieDetails extends Component {
 			production,
 			boxOffice
 		} = this.state.details;
-
-		const buttonText = this.props.favorites.find(m => m.movie_id === parseInt(this.props.id))
-			? 'Unfavorite'
-			: 'Favorite';
+    
+    const btnClass = this.props.favorites.find(m => m.movie_id === parseInt(this.props.id))
+        ? 'fas favorited'
+        : 'far';
 
 		return (
 			<section className="MovieDetails">
@@ -147,7 +147,10 @@ class MovieDetails extends Component {
 										<p className="metadata-info">{popularity}</p>
 										<p className="metadata-header">Box Office Gross: </p>
 										<p className="metadata-info">${boxOffice}</p>
-										{this.props.user.email && <button onClick={this.handleClick}>{buttonText}</button>}
+                      {this.props.user.email &&
+                        <p role="button" onClick={this.handleClick}><i className={`fa-heart ${btnClass}`}></i></p>
+                        // <button onClick={this.handleClick}>{buttonText}</button>
+                      }
 									</div>
 								</main>
 								<section className="MovieDetails-similar">

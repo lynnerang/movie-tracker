@@ -1,26 +1,21 @@
 import React from 'react';
-import ResultsScreen, { mapStateToProps } from './ResultsScreen';
-import Enzyme, { shallow } from 'enzyme';
-import { Provider } from "react-redux";
+import { ResultsScreen, mapStateToProps } from './ResultsScreen';
+import { shallow } from 'enzyme';
 import { mockMovies } from '../../util/mockData/mockData';
-import configureMockStore from "redux-mock-store";
-import Adapter from 'enzyme-adapter-react-16';
-Enzyme.configure({ adapter: new Adapter() })
 
-const mockStore = configureMockStore();
-const store = mockStore({});
 const mockState = {
   trending: mockMovies,
   top_rated: mockMovies,
   now_playing: mockMovies,
-  upcoming: mockMovies
+  upcoming: mockMovies,
+  favorites: mockMovies
 };
 
 describe('ResultsScreen', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<Provider store={store}><ResultsScreen section='popular' /></Provider>)
+    wrapper = shallow(<ResultsScreen movies={mockMovies} />)
   })
 
   it('Should match the snapshot', () => {

@@ -6,3 +6,4 @@ export const topRatedMoviesReducer = (state = [], action) => {
       return state;
   }
 }
+
