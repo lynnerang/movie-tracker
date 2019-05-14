@@ -59,9 +59,9 @@ class MovieDetails extends Component {
 	addFavorite = async () => {
 		const { title, releaseDate, poster_path, movie_id, rating, description } = this.state.details;
 		const body = {
-			movie_id: movie_id,
+			movie_id,
 			user_id: this.props.user.id,
-			poster_path: poster_path,
+			poster_path,
 			release_date: releaseDate,
 			vote_average: rating,
 			title,
