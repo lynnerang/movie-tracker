@@ -208,3 +208,178 @@ describe('fetchUser', () => {
 		});
 	});
 });
+
+describe('addFavorite', () => {
+	const expected = {
+		id: 100,
+		status: 'success',
+		message: 'Movie was added to favorites'
+	};
+
+	beforeEach(() => {
+		window.fetch = jest.fn().mockImplementation(() => {
+			return Promise.resolve({
+				ok: true,
+				json: () => Promise.resolve(expected)
+			});
+		});
+	});
+
+	it('should call fetch with the correct params', async () => {
+		const body = {
+			movie_id: 101,
+			user_id: 12,
+			poster_path: 'themoviedb.com/posterpath',
+			release_date: 2019,
+			vote_average: 5.5,
+			title: 'Justice League',
+			overview: 'Best superhero movie'
+		};
+		const url = 'http://localhost:3000/api/users/favorites/new';
+
+		const options = {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(body)
+		};
+
+		await Api.addFavorite(body);
+		expect(window.fetch).toHaveBeenCalledWith(url, options);
+	});
+
+	it('should return a parsed version of the response', async () => {
+		const expected = {
+			id: 100,
+			status: 'success',
+			message: 'Movie was added to favorites'
+		};
+		const body = {
+			movie_id: 101,
+			user_id: 12,
+			poster_path: 'themoviedb.com/posterpath',
+			release_date: 2019,
+			vote_average: 5.5,
+			title: 'Justice League',
+			overview: 'Best superhero movie'
+		};
+		const res = await Api.addFavorite(body);
+		expect(res).toEqual(expected);
+	});
+
+	it('should throw an error on fail', async () => {
+		window.fetch = jest.fn().mockImplementation(() => {
+			return Promise.resolve({
+				ok: false
+			});
+		});
+
+		const body = {
+			movie_id: 101,
+			user_id: 12,
+			poster_path: 'themoviedb.com/posterpath',
+			release_date: 2019,
+			vote_average: 5.5,
+			title: 'Justice League',
+			overview: 'Best superhero movie'
+		};
+		await expect(Api.addFavorite(body)).rejects.toEqual(Error('Could not add favorite'));
+	});
+});
+
+describe('deleteFavorite', () => {
+	const expected = {
+		status: 'success',
+		message: '1 row was deleted'
+	};
+
+	beforeEach(() => {
+		window.fetch = jest.fn().mockImplementation(() => {
+			return Promise.resolve({
+				ok: true,
+				json: () => Promise.resolve(expected)
+			});
+		});
+	});
+
+	it('should call fetch with the correct params', async () => {
+		const body = {
+			movie_id: 101,
+			user_id: 12
+		};
+		const url = `http://localhost:3000/api/users/${body.user_id}/favorites/${body.movie_id}`;
+
+		const options = {
+			method: 'DELETE',
+			headers: { 'Content-Type': 'application/json' }
+		};
+
+		await Api.deleteFavorite(body);
+		expect(window.fetch).toHaveBeenCalledWith(url, options);
+	});
+
+	it('should return a parsed version of the response', async () => {
+		const expected = {
+			status: 'success',
+			message: '1 row was deleted'
+		};
+
+		const body = {
+			movie_id: 101,
+			user_id: 12
+		};
+
+		const res = await Api.deleteFavorite(body);
+		expect(res).toEqual(expected);
+	});
+
+	it('should throw an error on fail', async () => {
+		window.fetch = jest.fn().mockImplementation(() => {
+			return Promise.resolve({
+				ok: false
+			});
+		});
+
+		const body = {
+			movie_id: 101,
+			user_id: 12
+		};
+
+		await expect(Api.deleteFavorite(body)).rejects.toEqual(Error('Could not delete favorite'));
+	});
+});
+
+describe('getFavorites', () => {
+	beforeEach(() => {
+		window.fetch = jest.fn().mockImplementation(() => {
+			return Promise.resolve({
+				ok: true,
+				json: () => Promise.resolve(mockMovies)
+			});
+		});
+	});
+
+	it('should call fetch with the correct params', async () => {
+		const userId = 101;
+		const url = `http://localhost:3000/api/users/${userId}/favorites`;
+
+		await Api.getFavorites(userId);
+		expect(window.fetch).toHaveBeenCalledWith(url);
+	});
+
+	it('should return a parsed version of the response', async () => {
+		const userId = 101;
+		const res = await Api.getFavorites(userId);
+		expect(res).toEqual(mockMovies);
+	});
+
+	it('should throw an error on fail', async () => {
+		window.fetch = jest.fn().mockImplementation(() => {
+			return Promise.resolve({
+				ok: false
+			});
+		});
+		const userId = 101;
+
+		await expect(Api.getFavorites(userId)).rejects.toEqual(Error('Could not get favorites.'));
+	});
+});

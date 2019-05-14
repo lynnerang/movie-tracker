@@ -94,10 +94,8 @@ class MovieDetails extends Component {
 			production,
 			boxOffice
 		} = this.state.details;
-    
-    const btnClass = this.props.favorites.find(m => m.movie_id === parseInt(this.props.id))
-        ? 'fas favorited'
-        : 'far';
+
+		const btnClass = this.props.favorites.find(m => m.movie_id === parseInt(this.props.id)) ? 'fas favorited' : 'far';
 
 		return (
 			<section className="MovieDetails">
@@ -147,10 +145,13 @@ class MovieDetails extends Component {
 										<p className="metadata-info">{popularity}</p>
 										<p className="metadata-header">Box Office Gross: </p>
 										<p className="metadata-info">${boxOffice}</p>
-                      {this.props.user.email &&
-                        <p role="button" onClick={this.handleClick}><i className={`fa-heart ${btnClass}`}></i></p>
-                        // <button onClick={this.handleClick}>{buttonText}</button>
-                      }
+										{this.props.user.email && (
+											<p role="button" onClick={this.handleClick}>
+												<i className={`fa-heart ${btnClass}`} />
+											</p>
+										)
+										// <button onClick={this.handleClick}>{buttonText}</button>
+										}
 									</div>
 								</main>
 								<section className="MovieDetails-similar">
