@@ -78,8 +78,7 @@ export class UserForm extends Component {
 
   render() {
     const errMsg = this.state.showErr ? this.getErrorMsg() : null;
-    console.log(this.state)
-    const disable = !this.state.name || !this.state.email || !this.state.password;
+    const disable = this.props.type === 'Sign Up' ? !this.state.name || !this.state.email || !this.state.password : !this.state.email || !this.state.password;
     const name = this.props.type === 'Sign Up' ? this.getName() : null;
 
     return (
