@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import UserForm from '../UserForm/UserForm';
 import { connect } from 'react-redux';
-import { login, logout } from '../../actions'
+import { login, logout } from '../../actions';
+import PropTypes from 'prop-types';
 
 class Header extends Component {
   state = {
@@ -94,6 +95,12 @@ export const mapDispatchToProps = dispatch => {
     login: user => dispatch(login(user)),
     logout: () => dispatch(logout())
   };
+};
+
+Header.propTypes = {
+  user: PropTypes.object,
+  login: PropTypes.func,
+  logout: PropTypes.func
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

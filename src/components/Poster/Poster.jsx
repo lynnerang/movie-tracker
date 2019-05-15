@@ -1,5 +1,6 @@
 import React from 'react';
 import './_Poster.scss';
+import PropTypes from 'prop-types';
 
 const Poster = props => {
   const classes = props.size === 'trending' && props.containerType !== 'grid'
@@ -11,6 +12,13 @@ const Poster = props => {
 			<h3 className="Poster-title">{props.title}</h3>
 		</article>
 	);
+};
+
+Poster.propTypes = {
+  size: PropTypes.string,
+  containerType: PropTypes.string,
+  poster_path: PropTypes.string,
+  title: PropTypes.string
 };
 
 export default Poster;

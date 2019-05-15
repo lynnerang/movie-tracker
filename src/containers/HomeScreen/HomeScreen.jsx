@@ -2,6 +2,7 @@ import React from 'react';
 import MovieContainer from '../MovieContainer/MovieContainer';
 import './_HomeScreen.scss';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 export const HomeScreen = props => {
 	return (
@@ -21,6 +22,13 @@ export const mapStateToProps = state => {
 		nowPlayingMovies: state.nowPlayingMovies,
     upcomingMovies: state.upcomingMovies,
 	};
+};
+
+HomeScreen.propTypes = {
+  trendingMovies: PropTypes.array,
+  topRatedMovies: PropTypes.array,
+  nowPlayingMovies: PropTypes.array,
+  upcomingMovies: PropTypes.array
 };
 
 
