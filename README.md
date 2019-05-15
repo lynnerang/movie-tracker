@@ -1,68 +1,102 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+## Table of contents
+* [Intro](#MovieTrackr-App)
+* [Screenshots](#Screenshots)
+* [Getting Started](#Getting-Started)
+* [How to Use](#How-to-Use)
+* [Project Emphasis](#Project-Emphasis)
+* [UI Design](#UI-Design)
+* [License](#License)
 
-### `npm start`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# MovieTrackr App
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+This project is a Turing front-end evelopment project focused on working with React, Redux, and and Enzyme/Jest.
 
-### `npm test`
+This is an app for people who would like to browse through movies and keep track of their favorites.  It displays movies in various categories like top rates and in theatres on the home page, and you can click into categories to view all movies of that category.  You can view the full details of movies by clicking on each movie link.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Screenshots
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Home page](/src/screenshots/1.png)
+![Sign up form](/src/screenshots/2.png)
+![Top rated movies page](/src/screenshots/3.png)
+![Movie details page](/src/screenshots/4.png)
+![Favorites page](/src/screenshots/5.png)
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Getting Started
 
-### `npm run eject`
+### View Live on GitHub
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+You can view the game live on my GitHub at the following link:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<a href="https://lynnerang.github.io/movie-tracker/">MovieTrackr - Live!</a>
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Get Your Own Copy
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+If you'd like to clone this repository to your own local machine, run the following command in your terminal:
 
-## Learn More
+```shell
+git clone https://github.com/lynnerang/movie-tracker.git
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Then run the following command to install dependencies:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```shell
+npm install
+```
 
-### Code Splitting
+To view the app in action, run the following command in your terminal:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+```bash
+npm start
+```
 
-### Analyzing the Bundle Size
+Then, go to `http://localhost:3000/` in your browser to see the code running in the browser.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+---
 
-### Making a Progressive Web App
+## How to Use
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+1. On the home page, you can see horizontal scrolling lists of movies from different categories, and you can click on any one to view more details.
+2. You can use the global navigation to click into different categories of movies, and can view movie details from clicking on any poster/title.
+3. You can click 'Sign Up' to create an account and keep track of your favorite movies.
+4. Once logged in, you'll see an option to add movies to your favorites on any movie details page.
+5. You can then view a list of all your favorite movies from the 'Favorites' link in navigation.
 
-### Advanced Configuration
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+## UI Design
 
-### Deployment
+The spec we were given had no information on UI design elements, so we started by wireframing a general idea of our layout.  
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+![Wireframes](/src/screenshots/5.png)
 
-### `npm run build` fails to minify
+Then we created a high-fidelity prototype of the design on Figma to have a more detailed idea of where we wanted everything to go on the different web pages.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+![Figma designs](/src/screenshots/6.png)
+
+
+## Project Emphasis
+
+View the project specification on the <a href="http://frontend.turing.io/projects/movie-tracker.html">Turing webpage for this project</a>.
+
+- [x] HTML & CSS 
+- [x] Flex-box
+- [x] Grid CSS
+- [x] Wireframing
+- [x] UI design
+- [x] React
+- [x] React router
+- [x] Redux
+- [x] Es6 classes
+- [x] API fetches
+- [x] Enzyme & Jest testing
+- [x] Webpack
+- [x] NPM
+
+
+## Licensing
+
+All credit goes to <a href="turing.io">Turing School of Software</a> for providing the project specifications.
