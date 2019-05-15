@@ -12,7 +12,7 @@ import Error from '../../components/Error/Error';
 import './_App.scss';
 import { connect } from 'react-redux';
 
-class App extends Component {
+export class App extends Component {
 	componentDidMount() {
 		this.props.getMovies('popular', this.props);
 		this.props.getMovies('top_rated', this.props);
