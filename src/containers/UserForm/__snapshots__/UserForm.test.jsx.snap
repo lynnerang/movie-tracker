@@ -1,7 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`UserForm Should match the snapshot 1`] = `ShallowWrapper {}`;
+exports[`UserForm Should match the snapshot as a log in form 1`] = `ShallowWrapper {}`;
 
-exports[`UserForm Should match the snapshot 2`] = `ShallowWrapper {}`;
-
-exports[`UserForm Should match the snapshot 3`] = `ShallowWrapper {}`;
+exports[`UserForm Should match the snapshot as a sign up form 1`] = `ShallowWrapper {}`;

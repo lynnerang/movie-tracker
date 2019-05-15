@@ -6,6 +6,7 @@ import { addMovieDetails, addFavorites } from '../../actions';
 import Loader from '../Loader/Loader';
 import StarRatings from 'react-star-ratings';
 import './_MovieDetails.scss';
+import PropTypes from 'prop-types';
 
 export class MovieDetails extends Component {
 	state = {
@@ -180,6 +181,16 @@ export const mapDispatchToProps = dispatch => {
 		addMovieDetails: movie => dispatch(addMovieDetails(movie)),
 		addFavorites: favorites => dispatch(addFavorites(favorites))
 	};
+};
+
+MovieDetails.propTypes = {
+  addMovieDetails: PropTypes.func,
+  addFavorites: PropTypes.func,
+  userEmail: PropTypes.object,
+  movieDetails: PropTypes.object,
+  id: PropTypes.number,
+  user: PropTypes.object,
+  favorites: PropTypes.array
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieDetails);

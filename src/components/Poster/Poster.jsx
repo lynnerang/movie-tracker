@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './_Poster.scss';
+import PropTypes from 'prop-types';
 
 class Poster extends Component {
 	render() {
@@ -24,4 +25,13 @@ export const mapStateToProps = state => {
 	};
 };
 
+
+Poster.propTypes = {
+  size: PropTypes.string,
+  containerType: PropTypes.string,
+  poster_path: PropTypes.string,
+  title: PropTypes.string
+};
+
 export default connect(mapStateToProps)(Poster);
+

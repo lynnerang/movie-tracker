@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 class Navigation extends Component {
   state = {
@@ -91,5 +92,9 @@ class Navigation extends Component {
 };
 
 const mapStateToProps = state => ({ user: state.user });
+
+Navigation.propTypes = {
+  user: PropTypes.object
+};
 
 export default connect(mapStateToProps)(Navigation);
