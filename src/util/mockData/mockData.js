@@ -97,3 +97,5 @@ export const mockState = {
 	upcomingMovies: mockMovies,
 	user: mockUser
 };
+
+export const mockMovieDetails = [{ ...mockMovie, movie_id: 299534 }, { mockMovie }, { mockMovie }];

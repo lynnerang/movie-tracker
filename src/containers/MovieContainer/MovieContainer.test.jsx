@@ -1,9 +1,7 @@
 import React from 'react';
-import MovieContainer from './MovieContainer';
-import Enzyme, { shallow } from 'enzyme';
+import {MovieContainer} from './MovieContainer';
+import  { shallow } from 'enzyme';
 import { mockMovies } from '../../util/mockData/mockData';
-import Adapter from 'enzyme-adapter-react-16';
-Enzyme.configure({ adapter: new Adapter() })
 
 describe('MovieContainer', () => {
   let wrapper;
