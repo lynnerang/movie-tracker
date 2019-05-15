@@ -7,10 +7,11 @@ import Loader from '../Loader/Loader';
 import StarRatings from 'react-star-ratings';
 import './_MovieDetails.scss';
 
-class MovieDetails extends Component {
+export class MovieDetails extends Component {
 	state = {
 		details: {},
-		loading: false
+		loading: false,
+		error: ''
 	};
 
 	componentDidMount() {
@@ -32,7 +33,7 @@ class MovieDetails extends Component {
 				this.props.addMovieDetails(details);
 				this.setState({ details, loading: false });
 			} catch (err) {
-				console.log(err);
+				this.setState({ error: err });
 			}
 		});
 	};
@@ -52,7 +53,7 @@ class MovieDetails extends Component {
 		try {
 			await deleteFavorite(body);
 		} catch (err) {
-			console.log(err);
+			this.setState({ error: err });
 		}
 	};
 
@@ -71,7 +72,7 @@ class MovieDetails extends Component {
 		try {
 			await addFavorite(body);
 		} catch (err) {
-			console.log(err);
+			this.setState({ error: err });
 		}
 	};
 

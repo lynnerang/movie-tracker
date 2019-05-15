@@ -1,3 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MovieDetails Should match the snapshot 1`] = `ShallowWrapper {}`;
+
+exports[`MovieDetails Should match the snapshot with the Loader 1`] = `ShallowWrapper {}`;
+
+exports[`MovieDetails Should match the snapshot with the empty favorite icon 1`] = `ShallowWrapper {}`;
