@@ -6,21 +6,21 @@
 	justify-content: space-between;
 	align-items: center;
 	text-align: center;
-  margin-right: 10px;
-  height: 100%;
+	margin-right: 10px;
+	height: 100%;
 
 	&.trending {
-    width: 250px;
+		width: 250px;
 
 		.Poster-poster,
 		.Poster-title {
-      width: 250px;
+			width: 250px;
 			font-size: 17px;
-    }
+		}
 
-    .Poster-poster {
-      height: 375px;
-    }
+		.Poster-poster {
+			height: 375px;
+		}
 	}
 
 	&:hover {
@@ -32,13 +32,12 @@
 			border-color: $highlight;
 		}
 	}
-
 }
 
 .Poster-poster {
-  width: 185px;
-  height: 275px;
-  border: 1px solid $faint-white;
+	width: 185px;
+	height: 275px;
+	border: 1px solid $faint-white;
 }
 
 .Poster-title {
@@ -51,4 +50,8 @@
 	color: $faint-white;
 	font-weight: 300;
 	text-align: left;
+}
+
+.favorited-poster {
+	border: 3px solid gold;
 }
