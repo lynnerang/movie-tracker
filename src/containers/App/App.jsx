@@ -11,6 +11,7 @@ import { Switch, Route } from 'react-router-dom';
 import Error from '../../components/Error/Error';
 import './_App.scss';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 class App extends Component {
 	componentDidMount() {
@@ -75,6 +76,17 @@ export const mapDispatchToProps = dispatch => {
 		login: user => dispatch(actions.login(user)),
 		addFavorites: favorites => dispatch(actions.addFavorites(favorites))
 	};
+};
+
+App.propTypes = {
+  trendingMovies: PropTypes.array,
+  topRatedMovies: PropTypes.array,
+  nowPlayingMovies: PropTypes.array,
+  upcomingMovies: PropTypes.array,
+  user: PropTypes.object,
+  addFavorites: PropTypes.func,
+  login: PropTypes.func,
+  getMovies: PropTypes.func
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

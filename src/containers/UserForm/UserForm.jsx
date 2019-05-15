@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { login, logout, addFavorites } from '../../actions';
 import { connect } from 'react-redux';
 import { fetchUser, getFavorites } from '../../util/api';
+import PropTypes from 'prop-types';
 
 export class UserForm extends Component {
 	state = {
@@ -121,6 +122,14 @@ export const mapDispatchToProps = dispatch => {
 		logout: () => dispatch(logout()),
 		addFavorites: favorites => dispatch(addFavorites(favorites))
 	};
+};
+
+UserForm.propTypes = {
+  type: PropTypes.string,
+  user: PropTypes.object,
+  addFavorites: PropTypes.func,
+  login: PropTypes.func,
+  getMovies: PropTypes.func
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserForm);

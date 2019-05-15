@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MovieContainer from '../MovieContainer/MovieContainer';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 export class ResultsScreen extends Component {
 	componentDidUpdate() {
@@ -20,6 +21,15 @@ export const mapStateToProps = state => {
 		upcoming: state.upcomingMovies,
 		favorites: state.favorites
 	};
+};
+
+ResultsScreen.propTypes = {
+  trending: PropTypes.array,
+  top_rated: PropTypes.array,
+  now_playing: PropTypes.array,
+  upcoming: PropTypes.array,
+  favorites: PropTypes.array,
+  section: PropTypes.string
 };
 
 export default connect(mapStateToProps)(ResultsScreen);
