@@ -71,11 +71,11 @@ Then, go to `http://localhost:3000/` in your browser to see the code running in 
 
 The spec we were given had no information on UI design elements, so we started by wireframing a general idea of our layout.  
 
-![Wireframes](/src/screenshots/5.png)
+![Wireframes](/src/screenshots/6.png)
 
 Then we created a high-fidelity prototype of the design on Figma to have a more detailed idea of where we wanted everything to go on the different web pages.
 
-![Figma designs](/src/screenshots/6.png)
+![Figma designs](/src/screenshots/7.png)
 
 
 ## Project Emphasis
