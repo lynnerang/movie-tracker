@@ -30,12 +30,6 @@ This is an app for people who would like to browse through movies and keep track
 
 ### View Live on GitHub
 
-You can view the game live on my GitHub at the following link:
-
-<a href="https://lynnerang.github.io/movie-tracker/">MovieTrackr - Live!</a>
-
-### Get Your Own Copy
-
 If you'd like to clone this repository to your own local machine, run the following command in your terminal:
 
 ```shell
